@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Owner's Response</title>
+  <script src="response.js"></script>
+  <link rel="stylesheet" href="response.css">
+</head>
+
+<body>
+  <header class="header">
+    <img src="icons/logo.png" id="logopic" alt="logo">
+    <div class="search-bar">
+      <input type="text" placeholder="Search Restaurants/Reviews">
+      <button type="submit">Search</button>
+    </div>
+
+    <div class="dropdown">
+      <img src="icons/profile.png" id="dropdownButton" class="profpic" alt="profile picture" onclick="toggleDropdown()">
+      <div id="dropdownContent">
+        <a href="" class="button">Profile</a>
+        <a href="register.html" class="button">Register</a>
+        <a href="login.html" class="button">Login</a>
+        <a href="login.html" class="buttonlog">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <div id="comments-container">
+    <h1 style="color: white;">Owner's Response</h1>
+    <div id="comments-list"></div>
+    <form id="comment-form">
+      <textarea id="comment-input" placeholder="Place Owner's Response" style="width: 493px; resize: vertical;"></textarea>
+      <button type="submit" style="justify-content: center;">Submit</button>
+      <!-- "▲","▼" -->
+    </form>
+  </div>
+</body>
+</html>
