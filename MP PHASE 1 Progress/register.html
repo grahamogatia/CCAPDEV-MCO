@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ACDF87, #1E5631);
+        }
+    </style>
+
+    <title>Register Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="inner-container">
+            <div class="title">Register</div>
+
+            <form action="#">
+                <div class="user-details">
+                    <div class="input">
+                        <span class="headerreg">First Name</span>
+                        <input type="text" class="first-name" placeholder="Enter First Name" required> 
+                    </div>
+    
+                    <div class="input">
+                        <span class="headerreg">Last Name</span>
+                        <input type="text" class="last-name" placeholder="Enter Last Name" required>
+                    </div>
+    
+                    <div class="input">
+                        <span class="headerreg">Username</span>
+                        <input type="text" class="username" placeholder="Enter Username" required>
+                    </div>
+    
+                    <div class="input">
+                        <span class="headerreg">Password</span>
+                        <input type="password" class="password" placeholder="Enter Password" required>
+                    </div>
+    
+                    <div class="input">
+                        <span class="headerreg">Avatar</span>
+                        <input type="file" class="avatar" id="image-file" placeholder="Avatar" accept="image/*">
+                        <label for="image-file">
+                            <i class="material-symbols-outlined">
+                                add_photo_alternate
+                            </i>
+                            Choose an Image
+                        </label>
+                    </div>
+    
+                    <div class="input">
+                        <span class="headerreg">Short Description</span>
+                        <input type="text" class="description" placeholder="Short Description">
+                    </div>
+    
+                </div>
+
+                <div class="submit-button">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+
+            <div class="login-link">Already have an account?<a href="login.html"> Login here</a> </div>
+
+        </div>
+    </div>
+</body>
+</html>

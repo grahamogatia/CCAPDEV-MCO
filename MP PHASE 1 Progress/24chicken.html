@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>24 Chicken</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="reviews.css">
+        <link rel="stylesheet" href="response.css">
+        <script src="24chicken.js"></script>
+        </head>
+        <body>
+          <header class="header">
+            <a href="main.html">
+              <img src="icons/logo.png" id="logopic" alt="logo">
+            </a>
+            <div class="search-bar">
+            <input type="text" placeholder="Search Restaurants/Reviews">
+            <button type="submit">Search</button>
+          </div>
+        
+          <div class="dropdown">
+            <img src="icons/profile.png" id="dropdownButton" class="profpic" alt="profile picture" onclick="toggleDropdown()">
+            <div id="dropdownContent">
+              <a href="register.html" class="button" onclick="handleClick('Register')">Register</a>
+              <a href="login.html" class="button" onclick="handleClick('Login')">Login</a>
+              <a href="login.html" class="buttonlog" onclick="handleClick('Logout')">Logout</a>
+            </div>
+          </div>
+        </header>
+        <div class="gallery-container">
+            <div class="gallery-slider">
+              <div class="slide">
+                <img src="24chickenPICS/chicken.png" alt="Image 1">
+              </div>
+              <div class="slide">
+                <img src="24chickenPICS/chicken meal.png" alt="Image 2">
+              </div>
+              <div class="slide">
+                <img src="24chickenPICS/24menu.png" alt="Image 3">
+              </div>
+              <div class="slide">
+                <img src="24chickenPICS/24menu2.png" alt="Image 3">
+              </div>
+            </div>
+          
+            <div class="thumbnails">
+              <div class="thumbnail">
+                <img src="24chickenPICS/chicken.png" alt="Image 1">
+              </div>
+              <div class="thumbnail">
+                <img src="24chickenPICS/chicken meal.png" alt="Image 2">
+              </div>
+              <div class="thumbnail">
+                <img src="24chickenPICS/24menu.png" alt="Image 3">
+              </div>
+              <div class="thumbnail">
+                <img src="24chickenPICS/24menu2.png" alt="Image 3">
+              </div>
+            </div>
+          </div>
+          
+
+        <div class="container">
+
+            <div id="comments-container">
+                <h1 style="color: white;">Customer Response</h1>
+                <div id="comments-list"></div>
+            </div>
+
+
+            <button type="submit" class="write-review-btn" onclick="openPopup()">Write a Review</button>
+            <div class="review-container-popup" id="popup">
+                <div class="restaurant-name">
+                    <p>24 Chicken</p>
+                </div>
+    
+                <div class="user-container">
+                    <div><img src="icons/profile.png" class="profile"/></div>
+                    <div class="user">
+                        <a class="name">User's Name</a>
+                        <a class="notice">Posting publicly</a>
+                    </div>
+                </div>
+    
+                <div class="ratings">
+                    <span class="fa fa-star fa-2x"></span>
+                    <span class="fa fa-star fa-2x"></span>
+                    <span class="fa fa-star fa-2x"></span>
+                    <span class="fa fa-star fa-2x"></span>
+                    <span class="fa fa-star fa-2x"></span>
+                </div>
+    
+                <div class="write-review">
+                    <form id="review-form">
+                        <textarea class="textbox" id="comment-input" placeholder="Share details of your experience at this place"></textarea>
+                        <div class="button-container">
+                            <div><input type="file" id="media-input" accept="image/* video/*"></div>
+                            <input type="button" value="Cancel" class="button" onclick="closePopup()">
+                            <input type="submit" value="Post" class="button" onclick="closePopup()">
+                        </div>
+                        <!-- "▲","▼" -->
+                      </form>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+            let popup = document.getElementById("popup");
+
+            function openPopup() {
+                popup.classList.add("open-popup");
+            }
+
+            function closePopup() {
+                document.getElementById("media-input").value = "";
+                popup.classList.remove("open-popup");
+            }
+
+        </script>
+        
+    </body>
+</html>
