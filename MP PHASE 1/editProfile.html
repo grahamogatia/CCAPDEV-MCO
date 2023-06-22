@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ACDF87, #1E5631);
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="editProfile.js"></script>
+
+    <title>Edit Profile</title>
+</head>
+<body>
+    <div class="edit-profile-container">
+        <div class="edit-profile-inner-container">
+            <div class="title">Edit Profile</div>
+
+            <form action="main.html">
+                <div class="edit-profile-user-details">
+
+                    <div class="input">
+                        <input type="file" class="avatar" id="image-file" placeholder="Avatar" accept="image/*" onchange="changeImage(event)">
+                        <label for="image-file">
+                            <img src="icons/admin.png" alt="profile-pic" id="current-pic">
+                        </label>
+                    </div>
+
+                    <div id="username">
+                        <span class="headerreg">username123</span>
+                    </div>
+
+                    <div class="input" id="first-name-id">
+                        <span class="headerreg">First Name</span>
+                        <input type="text" class="first-name" placeholder="John" readonly> 
+                    </div>
+    
+                    <div class="input" id="last-name-id">
+                        <span class="headerreg">Last Name</span>
+                        <input type="text" class="last-name" placeholder="Cena" readonly>
+                    </div>
+
+                    <div class="input" id="description-id">
+                        <span class="headerreg">Short Description</span>
+                        <textarea id="description-area" class="description" placeholder="Short Description"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="submit-button">
+                    <input type="submit" value="Confirm">
+                </div>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

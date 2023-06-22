@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;700&display=swap');
+
+.review-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    height: 450px;
+    width: 450px;
+    background-color: #1e5631;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: white;
+    font-family: 'Mukta', sans-serif;
+    border-radius: 25px;
+
+}
+
+.restaurant-name {
+    font-size: 30px;
+    margin-bottom: -25px;
+}
+
+.user-container {
+    display: flex;
+    margin-right: auto;
+    margin-left: 20px;
+}
+
+    .profile {
+        height: 50px;
+        width: 50px;
+    }
+
+    .user {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+    }
+
+    .name {
+        font-size: 25px;
+        font-weight: bolder;
+    }
+
+    .notice {
+        font-size: 12px;
+        margin-top: -10px;
+    }
+
+.ratings {
+    margin-top: 10px;
+}
+
+    .fa.fa-star.fa-2x:hover {
+        color: orange;
+    }
+
+.write-review {
+    margin-top: 10px;
+}
+    .textbox {
+        height: 150px;
+        width: 400px;
+        font-family: 'Mukta', sans-serif;
+        resize: none;
+        
+    }
+
+.button-container {
+    margin: 20px;
+    margin-left: auto;
+}
+    .button {
+        border-radius: 25px;
+        font-family: 'Mukta', sans-serif;
+    }
+
+

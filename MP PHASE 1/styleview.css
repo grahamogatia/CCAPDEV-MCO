@@ -1,0 +1,252 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  
+  width: auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+.restaurant-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-right: 50px;
+
+ 
+}
+
+.restaurant-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  padding: 10px 0;
+  margin-top: 20px;
+  margin-right: 20px;
+  object-fit: cover;
+
+}
+
+.restaurant-name {
+  margin-bottom: 20px;
+  
+}
+
+.restaurant-description {
+
+  margin-left: 5px;
+  margin-top: 20px;
+  
+
+}
+
+.resto-address {
+  margin-top: 10px;
+
+  padding-top: 5px;
+  padding-bottom: 0%;
+
+}
+
+.resto-phone {
+ 
+  padding: 0cap;
+
+  
+}
+
+
+
+.rev {
+  justify-content: center;
+  margin: 10px;
+}
+
+.postsContainer {
+  justify-content: center;
+  margin: 10px;
+}
+
+
+/*
+
+.restaurant-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .restaurant-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    margin-right: 20px;
+  }
+  
+  .restaurant-description {
+    flex: 1;
+  }
+  
+  .restaurant-name {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .restaurant-address,
+  .restaurant-phone {
+    margin: 5px 0;
+  }
+  
+  .reviews {
+    padding: 10px 0;
+    color: black;
+    text-align: center;
+  }
+
+  .r {
+    font-size: larger;
+    font-size: 40px;
+    
+  }
+
+  .inner{
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+  }
+
+  .border{
+    width: 160px;
+    height: 5px;
+    background: lightgreen;
+    margin: 1px auto;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .col {
+    flex: 33.33%;
+    max-width: 33.33%;
+    box-sizing: border-box;
+    padding: 15px; 
+
+  }
+
+  .testimony {
+    background: lightgray;
+    padding: 10px;
+  }
+
+  .testimony img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .name {
+    font-size: 15px;
+    text-transform: lowercase;
+    margin: 2px;
+  }
+
+  .stars {
+    color: #6ab04c;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .s {
+    background-image: url('Images/star.png');
+    background-size: 15px 15px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .review {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width:960px) {
+    .col{
+      flex: 100%;
+      max-width: 80%;
+    }
+    
+  }
+  
+  .review-title {
+    font-size: 8px;
+    margin: 0;
+  }
+  
+  .review-preview {
+    margin-bottom: 10px;
+    max-height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
+  
+  .review-details {
+    color: #888;
+    display: flex;
+    margin: 3px;
+    justify-content: center;
+    
+  }
+
+  .votes {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+    margin-left: px;
+  }
+
+  .upvote {
+    background-image: url('Images/upout.png');
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .downvote {
+    background-image: url('Images/downout.png');
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .num {
+    justify-content: flex-start;
+    width: 25px;
+  }
+
+  .helpful-count {
+    font-weight: bold;
+  }
+  
+  .read-more {
+    text-decoration: underline;
+    color: #007bff;
+  }
+  */
