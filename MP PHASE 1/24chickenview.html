@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>24 Chicken</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="styleview.css"> 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<style>
+  body {
+    margin: 0;
+    padding-top: 50px;
+    font-family: 'Mukta', sans-serif;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #1E5631;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+  }
+
+  .header .button {
+    padding: 5px 10px;
+    color: black;
+    border: none;
+    cursor: pointer;
+  }
+
+  .header .button:hover {
+    background-color: lightgray;
+  }
+
+  .header .buttonlog {
+    padding: 5px 10px;
+    color: #d21404;
+    border: none;
+    cursor: pointer;
+  }
+
+  .header .buttonlog:hover {
+    background-color: darksalmon;
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 0 5px;
+    border-radius: 5px;
+  }
+
+  .profpic {
+    display: flex; 
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+  }
+
+  #logopic {
+    width: 45px;
+    height: 45px;
+  }
+
+  #commentpic {
+    width: 20px;
+    height: 20px;
+  }
+
+  .search-bar input[type="text"] {
+    flex: 1;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    outline: none;
+  }
+
+  .search-bar input[type="text"]:hover {
+    background-color: #D3D3D3;
+  }
+
+  .search-bar input[type="text"] {
+    flex: 1;
+    border: none;
+    padding: 5px;
+    font-size: 13px;
+    width: 1000px;
+  }
+
+  .search-bar button {
+    padding: 5px 10px;
+    background-color: #4C9A2A;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .search-bar button:hover {
+    background-color: #ACDF87;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    align-items: center;
+  }
+
+  #dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    right: 40%;
+  }
+
+  .dropdown:hover #dropdownContent {
+    display: block;
+  }
+
+  .dropdown a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .dropdown a:hover {
+    background-color: #ddd;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .bodyweb {
+    padding: 0 20px;
+    margin: 5px 0;
+  }
+
+
+  textarea{
+    resize: vertical;
+  }
+
+  #commentsContainer {
+    padding: 0 20px 20px;
+    margin-top: 0;
+    font-size: 14px;
+  }
+
+  .comment {
+    display: flex;
+    align-items: center;
+  }
+  
+  .comment .profile-picture {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+  }
+  
+  #postButton {
+    display: none;
+  }
+</style>
+
+<script>
+  var dropdownContent = document.getElementById("dropdownContent");
+  var dropdownButton = document.getElementById("dropdownButton");
+  var isCommentClicked = false;
+
+  function toggleDropdown() {
+    dropdownContent.classList.toggle("show");
+  }
+
+  function showTextarea() {
+    var textarea = document.getElementById('myTextarea');
+    textarea.classList.toggle('hide');
+    isCommentClicked = !isCommentClicked;
+    togglePostButtonVisibility();
+  }
+
+  function handleClick(action) {
+    console.log("Clicked " + action);
+  }
+
+  dropdownButton.addEventListener("mouseout", function (event) {
+    if (!dropdownContent.contains(event.toElement)) {
+      dropdownContent.classList.remove("show");
+    }
+  });
+
+  function togglePostButtonVisibility() {
+    var textarea = document.getElementById('myTextarea');
+    var postButton = document.getElementById('postButton');
+    if (isCommentClicked && !textarea.classList.contains('hide')) {
+      postButton.style.display = 'block';
+    } else {
+      postButton.style.display = 'none';
+    }
+  }
+
+  function postComment() {
+    var textareaValue = document.getElementById('myTextarea').value;
+    
+    if (textareaValue.trim() === '') {
+      alert("Comment cannot be empty!");
+      return;
+    }
+    
+    var commentsContainer = document.getElementById('commentsContainer');
+    
+    var commentDiv = document.createElement('div');
+    commentDiv.classList.add('comment');
+    
+    var profilePictureImg = document.createElement('img');
+    profilePictureImg.src = "admin.png";
+    profilePictureImg.alt = 'Profile Picture';
+    profilePictureImg.classList.add('profile-picture');
+    commentDiv.appendChild(profilePictureImg);
+    
+    var commentParagraph = document.createElement('p');
+    commentParagraph.textContent = textareaValue;
+    commentDiv.appendChild(commentParagraph);
+    
+    commentsContainer.appendChild(commentDiv);
+    
+    document.getElementById('myTextarea').value = '';
+    
+    var textarea = document.getElementById('myTextarea');
+    var postButton = document.getElementById('postButton');
+    textarea.classList.add('hide');
+    postButton.style.display = 'none';
+    isCommentClicked = false;
+  }
+</script>
+
+<body>
+  <header class="header">
+    <a href="mainguest.html">
+      <img src="icons/logo.png" id="logopic" alt="logo" style="padding-left: 10px; margin-right: 0px;">
+    </a>
+    <div class="search-bar">
+      <input type="text" placeholder="Search Restaurants/Reviews">
+      <button type="submit">Search</button>
+    </div>
+    <div class="dropdown">
+      
+      <img src="icons/profile.png" id="dropdownButton" class="profpic" alt="profile picture" onclick="toggleDropdown()">
+      <div id="dropdownContent">
+        <a href="register.html" class="button" onclick="handleClick('Register')">Register</a>
+        <a href="login.html" class="button" onclick="handleClick('Login')">Login</a>
+        <!-- <a href="login.html" class="buttonlog" onclick="handleClick('Logout')">Logout</a> -->
+      </div>
+    </div>
+  </header>
+
+  <div class="restaurant-info">
+    <img src="Images/24chicken.jpeg" alt="Restaurant Image" class="restaurant-image">
+    <div class="restaurant-description">
+      <h2 class="restaurant-name">24 Chicken</h2>
+      <p class="resto-address">EGI Towers Taft Ground Floor</p>
+      <p class="resto-phone">Phone: 183-456-8920</p>
+    </div>
+  </div>
+
+  <h1 class="rev"> Reviews </h1>
+
+
+
+  <div id="posts-container">
+    <!-- Posts and associated comments will be dynamically added here -->
+  </div>
+
+
+
+
+
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #comments-container {
+      margin-bottom: 20px;
+    }
+
+    .comment {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      /* background-color: #f5f5f5; */
+    }
+
+    .comment .author {
+      font-weight: bold;
+    }
+
+    #comment-input {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+
+    #comment-form button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #comment-form button:hover {
+      background-color: #45a049;
+    }
+
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      position: relative;
+      width: 1000px;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    #posts-container {
+      display: flex;
+      justify-content: flex-start;
+      gap: 20px;
+      padding: 20px;
+      align-items: center;
+    }
+
+    .post {
+      width: 227px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      /* background-color: #f5f5f5; */
+      border-radius: 10px;
+    }
+
+    .post-content {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      /* background-color: #f5f5f5; Add this line */
+
+    }
+
+    .view-comments-button {
+        border-color: #f5f5f5;
+        /* background-color: #f5f5f5; */
+    }
+
+    .author-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+
+.author-image {
+  margin-right: 10px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.button-container button {
+  margin-right: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 16px;
+}
+
+.button-container button.upvote {
+  color: #FF5700;
+}
+
+
+
+.button-container button.downvote {
+  color: #7193FF;
+}
+
+/*
+
+.button-container button.upvote:hover {
+  color: black;
+}
+
+.button-container button.downvote:hover {
+  color: black;
+} */
+
+.author-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.author-image {
+  margin-right: 10px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.button-container button {
+  margin-right: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 16px;
+}
+
+.button-container button.upvote {
+  color: #FF5700;
+}
+
+.upvote5 {
+  margin-right: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 16px;
+}
+
+.upvote5 {
+  color: #FF5700;
+}
+.button-container button.downvote {
+  color: #7193FF;
+}
+
+
+.popup-content .post-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+.popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    
+  </style>
+  <script>
+    const posts = [
+      {
+        id: 1,
+        author: "John",
+        content: "I recently had the pleasure of dining at this amazing chicken restaurant, and let me tell you, it was an absolute delight for my taste buds! From the moment I stepped in, the mouthwatering aroma of perfectly seasoned chicken filled the air, creating an irresistible temptation.",
+        upvotes: 10,
+        downvotes: 5,
+        comments: [
+          {
+            id: 1,
+            author: "24 Chicken ©",
+            content: "Thank you for your wonderful review! We're thrilled that you enjoyed our deliciously seasoned chicken. We hope to see you again soon!",
+            upvotes: 3,
+            downvotes: 2
+          }
+        ]
+      },
+      {
+        id: 2,
+        author: "Jane",
+        content: "Now, let's talk about the star of the show—the chicken! The menu boasted a wide variety of mouthwatering chicken dishes, and I was delighted to discover that each one exceeded my expectations. The chicken was cooked to perfection, tender and juicy on the inside with a crispy and flavorful exterior.",
+        upvotes: 100,
+        downvotes: 25,
+        comments: [
+          {
+            id: 1,
+            author: "24 Chicken ©",
+            content: "Thank you for your fantastic review! We're thrilled to hear that our chicken dishes exceeded your expectations and left you thoroughly satisfied. Our team takes pride in cooking each chicken to perfection, ensuring it's tender, juicy, and accompanied by a crispy and flavorful exterior. We appreciate your kind words and look forward to serving you again soon.",
+            upvotes: 13,
+            downvotes: 22
+          }
+        ]
+      },
+      {
+        id: 3,
+        author: "Billie",
+        content: "The chicken at this place is absolutely delicious! It's always cooked to perfection, with a crispy and flavorful coating. The meat is juicy and tender, and the seasoning is spot-on. Highly recommended!",
+        upvotes: 30,
+        downvotes: 54,
+        comments: [
+          {
+            id: 1,
+            author: "24 Chicken ©",
+            content: "Thank you so much for your incredible review! We are absolutely thrilled to hear that our chicken has been a source of delight for you. It brings us great joy to know that it consistently meets your expectations and that you find the crispy and flavorful coating, as well as the juicy and tender meat, to be exceptional. We truly appreciate your recommendation and can't express how excited we are to have the opportunity to welcome you back for another memorable dining experience. Your support means the world to us!",
+            upvotes: 37,
+            downvotes: 52
+          }
+        ]
+      },
+      {
+        id: 4,
+        author: "Kovie",
+        content: "I've been to many chicken places, but this one stands out from the rest. The chicken here is incredibly flavorful and the portions are generous. The service is also excellent, with friendly staff who make sure you have a great dining experience.",
+        upvotes: 104,
+        downvotes: 54,
+        comments: [
+          {
+            id: 1,
+            author: "24 Chicken ©",
+            content: "Thank you so much for your wonderful review! We are honored that our chicken place has made a lasting impression on you and stands out among the rest. We take great pride in providing incredibly flavorful chicken that leaves our customers satisfied. It's fantastic to hear that you found our portions to be generous, ensuring that you leave with a fully satisfied appetite.",
+            upvotes: 43,
+            downvotes: 42
+          }
+        ]
+      }, 
+      {
+        id: 5,
+        author: "Niki",
+        content: "I had high expectations for this chicken place, but unfortunately, I was disappointed. The chicken was overcooked and lacked flavor. The service was slow, and the prices were a bit too high for what you get. I wouldn't recommend this place if you're looking for tasty chicken.",
+        upvotes: 59,
+        downvotes: 95,
+        comments: [
+          {
+            id: 1,
+            author: "24 Chicken ©",
+            content: "Thank you for sharing your feedback about your experience at our chicken place. We're truly sorry to hear that we did not meet your expectations. We apologize for the overcooked and lackluster chicken you received, as well as the slow service you encountered. We strive to deliver delicious and flavorful chicken along with prompt and attentive service, and we're disappointed to have fallen short in your case. We appreciate your honest feedback regarding the pricing as well. We will carefully review our offerings to ensure they align with the value we aim to provide.",
+            upvotes: 93,
+            downvotes: 29
+          }
+        ]
+      }
+    ];
+
+    function renderPosts() {
+      const postsContainer = document.getElementById('posts-container');
+      postsContainer.innerHTML = '';
+
+      posts.forEach(post => {
+        const postElement = document.createElement('div');
+        postElement.classList.add('post');
+        postElement.style.padding="10px";
+        postElement.innerHTML = `
+          <div class="author-wrapper">
+            <img src="icons/admin.png" width="50px" height="50px" class="author-image">
+            <p class="author">${post.author}</p>
+          </div>
+          <p class="post-content">${truncateString(post.content, 100)}</p>
+          <div class="button-container">
+            <div class="vote-count-container">
+              <a href="login.html" style="text-decoration: none;">
+  <button class="upvote">▲</button>
+</a>
+
+  <span class="upvote-count">${post.upvotes}</span>
+</div>
+<div class="vote-count-container">
+  <a href="login.html" style="text-decoration: none;">
+    <button class="downvote">▼</button>
+  </a>
+  <span class="downvote-count">${post.downvotes}</span>
+</div>
+
+            <button class="view-comments-button" data-post-id="${post.id}">See More</button>
+          </div>
+        `;
+        postsContainer.appendChild(postElement);
+
+        const upvoteButton = postElement.querySelector('.upvote');
+        const downvoteButton = postElement.querySelector('.downvote');
+        const upvoteCount = postElement.querySelector('.upvote-count');
+        const downvoteCount = postElement.querySelector('.downvote-count');
+      });
+
+      const viewCommentsButtons = document.getElementsByClassName('view-comments-button');
+      Array.from(viewCommentsButtons).forEach(button => {
+        button.addEventListener('click', handleViewComments);
+      });
+    }
+
+    function truncateString(str, maxLength) {
+      if (str.length > maxLength) {
+        return str.substring(0, maxLength) + '...';
+      }
+      return str;
+    }
+
+    function handleViewComments(event) {
+  const postId = event.target.dataset.postId;
+  const post = posts.find(post => post.id == postId);
+
+  if (!post) return;
+
+  const popupOverlay = document.createElement('div');
+  popupOverlay.classList.add('popup-overlay');
+  popupOverlay.style.zIndex='3';
+  popupOverlay.style.backgroundColor = 'grey';
+  popupOverlay.style.display = 'flex';
+  popupOverlay.style.alignItems = 'center';
+  popupOverlay.style.justifyContent = 'center';
+  popupOverlay.style.position = 'fixed';
+  popupOverlay.style.top = '0';
+  popupOverlay.style.left = '0';
+  popupOverlay.style.width = '100%';
+  popupOverlay.style.height = '100%';
+  popupOverlay.style.opacity = '95%';
+
+
+  const popupContent = document.createElement('div');
+  popupContent.style.backgroundColor="#f5f5f5";
+  popupContent.style.width="800px";
+  popupContent.style.padding="10px";
+  popupContent.style.borderRadius="7%";
+  popupContent.innerHTML = `
+  
+  <div class="post-content">
+    <div class="author-wrapper">
+      <span class="popup-close">&times;</span> <!-- Add the close button -->
+
+      <img src="icons/admin.png" width="50px" height="50px" class="author-image" style="padding:10px">
+      <p class="author">${post.author}</p>
+    </div>
+    <p style="white-space: normal;">${post.content}</p>
+    <div class="button-container">
+      <div class="vote-count-container">
+        <a href="login.html">
+          <button class="upvote">▲</button>
+        </a>
+        <span class="upvote-count">${post.upvotes}</span>
+      </div>
+      <div class="vote-count-container">
+        <a href="login.html">
+          <button class="downvote">▼</button>
+        </a>
+        <span class="downvote-count">${post.downvotes}</span>
+      </div>
+    </div>
+  </div>
+  <h4>Comments</h4>
+`;
+
+
+
+const closeButton = document.createElement('span');
+  closeButton.classList.add('popup-close');
+  closeButton.innerHTML = '&times;';
+  closeButton.addEventListener('click', () => {
+    popupOverlay.remove();
+  });
+
+  popupContent.querySelector('.post-content').appendChild(closeButton);
+
+  post.comments.forEach(comment => {
+    const commentElement = document.createElement('div');
+    commentElement.classList.add('comment');
+    commentElement.innerHTML = `
+      <div class="author-wrapper">
+        <img src="24chickenPICS/logo.jpg" width="50px" height="50px" class="author-image">
+        <p class="author">${comment.author}</p><span>&nbsp;</span>
+      </div>
+      <p class="comment-content">${comment.content}</p>
+      <div class="vote-count-container">
+        <a href="login.html">
+          <button class="upvote5">▲</button>
+        </a>
+
+        <span class="upvote-count">${comment.upvotes}</span>
+        <a href="login.html">
+          <button class="downvote5">▼</button>
+        </a>
+      </div>
+  <span class="downvote-count">${comment.downvotes}</span>
+      </div>
+    
+<style>
+  .vote-count-container {
+    display: inline-flex; /* Use inline-flex to make the buttons appear in a single line */
+    align-items: center; /* Align items vertically center */
+  }
+
+  .upvote5,
+  .downvote5 {
+    margin-right: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 2px;
+    font-size: 16px;
+  }
+
+  .upvote5 {
+    color: #FF5700;
+  }
+
+  .downvote5 {
+    color: #7193FF;
+  }
+
+  
+</style>
+`;
+
+    const upvoteButton = commentElement.querySelector('.upvote');
+    const downvoteButton = commentElement.querySelector('.downvote');
+    const upvoteCount = commentElement.querySelector('.upvote-count');
+    const downvoteCount = commentElement.querySelector('.downvote-count');
+
+    popupContent.appendChild(commentElement);
+  });
+
+  const popup = document.createElement('div');
+  popup.classList.add('popup');
+  popup.appendChild(popupContent);
+
+  popupOverlay.appendChild(popup);
+  document.body.appendChild(popupOverlay);
+}
+
+
+    renderPosts();
+  </script>
+</body>
+</html>
