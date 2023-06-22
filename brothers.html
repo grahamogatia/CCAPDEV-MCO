@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Brother's Burger</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="styleview.css"> 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!--<link rel="stylesheet" href="response2.css"> 
+  <link rel="stylesheet" href="reviews.css"> -->
+ <!-- <script src="reviews2.js"></script> -->
+
+</head>
+<body>
+  <header class="header">
+    <img src="Images/logo.png" id="logopic" alt="logo">
+    <div class="search-bar">
+      <input type="text" placeholder="Search Restaurants/Reviews">
+      <button type="submit">Search</button>
+    </div>
+
+    <div class="dropdown">
+      <img src="Images/profile.png" id="dropdownButton" class="profpic" alt="profile picture" onclick="toggleDropdown()">
+      <div id="dropdownContent">
+        <a href="#" class="button" onclick="handleClick('Register')">Register</a>
+        <a href="#" class="button" onclick="handleClick('Login')">Login</a>
+        <a href="#" class="buttonlog" onclick="handleClick('Logout')">Logout</a>
+      </div>
+    </div>
+  </header>
+
+
+<div class="restaurant-info">
+
+<img src="Images/brothers2.jpeg" alt="Restaurant Image" class="restaurant-image">
+<div class="restaurant-description">
+  <h2 class="restaurant-name">Brother's Burger</h2>
+  <p class="resto-address">WH Condominum Ground floor</p>
+  <p class="resto-phone">Phone: 123-226-7890</p>
+  <img src="" class="resto-menu">
+</div>
+</div>
+
+
+
+
+
+  <h1 class="rev"> Reviews </h1>
+
+
+
+  <div id="posts-container">
+    <!-- Posts and associated comments will be dynamically added here -->
+  </div>
+
+
+
+
+
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #comments-container {
+      margin-bottom: 20px;
+    }
+
+    .comment {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      /* background-color: #f5f5f5; */
+    }
+
+    .comment .author {
+      font-weight: bold;
+    }
+
+    #comment-input {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+
+    #comment-form button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #comment-form button:hover {
+      background-color: #45a049;
+    }
+
+    /* Styles for the popup */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      position: relative;
+      width: 1000px;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    /* Updated styles for the posts */
+    #posts-container {
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+    }
+
+    .post {
+      width: 300px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      /* background-color: #f5f5f5; */
+      border-radius: 10px;
+    }
+
+    .post-content {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      /* background-color: #f5f5f5; Add this line */
+
+    }
+
+    .view-comments-button {
+        border-color: #f5f5f5;
+        /* background-color: #f5f5f5; */
+    }
+
+    .author-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+
+.author-image {
+  margin-right: 10px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.button-container button {
+  margin-right: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 16px;
+}
+
+.button-container button.upvote {
+  color: #FF5700;
+}
+
+
+
+.button-container button.downvote {
+  color: #7193FF;
+}
+
+/*
+
+.button-container button.upvote:hover {
+  color: black;
+}
+
+.button-container button.downvote:hover {
+  color: black;
+} */
+
+.author-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.author-image {
+  margin-right: 10px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.button-container button {
+  margin-right: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 16px;
+}
+
+.button-container button.upvote {
+  color: #FF5700;
+}
+
+.upvote5 {
+  margin-right: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 16px;
+}
+
+.upvote5 {
+  color: #FF5700;
+}
+.button-container button.downvote {
+  color: #7193FF;
+}
+
+/*
+.button-container button.upvote:hover {
+  color: black;
+}
+
+.button-container button.downvote:hover {
+  color: black;
+} */
+
+.popup-content .post-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+.popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    
+  </style>
+  <script>
+    // Simulated post data with associated comments
+    const posts = [
+      {
+        id: 1,
+        author: "John",
+        content: "Great food! Affordable meals :))",
+        upvotes: 10,
+        downvotes: 5,
+        comments: [
+          {
+            id: 1,
+            author: "Alice",
+            content: "I agree with your post.",
+            upvotes: 3,
+            downvotes: 1
+          },
+          {
+            id: 2,
+            author: "Bob",
+            content: "Great points! Thanks for sharing.",
+            upvotes: 5,
+            downvotes: 2
+          }
+        ]
+      },
+      {
+        id: 2,
+        author: "Jane",
+        content: "My go-to food around taft!",
+        upvotes: 8,
+        downvotes: 2,
+        comments: [
+          {
+            id: 1,
+            author: "Charlie",
+            content: "Same!",
+            upvotes: 2,
+            downvotes: 1
+          }
+        ]
+      },
+      {
+        id: 1,
+        author: "Billie",
+        content: "My favorite food of all time! Staff was accomodating ",
+        upvotes: 10,
+        downvotes: 5,
+        comments: [
+          {
+            id: 1,
+            author: "Cole",
+            content: "I agree with your post.",
+            upvotes: 3,
+            downvotes: 1
+          },
+          {
+            id: 2,
+            author: "Chelsea",
+            content: "Great points! Thanks for sharing.",
+            upvotes: 5,
+            downvotes: 2
+          }
+        ]
+      },
+      {
+        id: 1,
+        author: "Kovie",
+        content: "Staff was slow, but I got my food so heh",
+        upvotes: 1,
+        downvotes: 5,
+        comments: [
+          {
+            id: 1,
+            author: "Suho",
+            content: "I agree with your post.",
+            upvotes: 3,
+            downvotes: 1
+          },
+          {
+            id: 2,
+            author: "IU",
+            content: "Great points! Thanks for sharing.",
+            upvotes: 5,
+            downvotes: 2
+          }
+        ]
+      }, 
+      {
+        id: 1,
+        author: "Niki",
+        content: "Yummy food!",
+        upvotes: 78,
+        downvotes: 3,
+        comments: [
+          {
+            id: 1,
+            author: "Abbie",
+            content: "Right!!",
+            upvotes: 3,
+            downvotes: 1
+          },
+          {
+            id: 2,
+            author: "Miley",
+            content: "Nice.",
+            upvotes: 5,
+            downvotes: 2
+          }
+        ]
+      }
+    ];
+
+    // function incrementVote(voteCountElement) {
+    //   let currentCount = parseInt(voteCountElement.innerText);
+    //   let newCount = currentCount + 1;
+    //   voteCountElement.innerText = newCount;
+    // }
+
+    function renderPosts() {
+      const postsContainer = document.getElementById('posts-container');
+      postsContainer.innerHTML = '';
+
+      posts.forEach(post => {
+        const postElement = document.createElement('div');
+        postElement.classList.add('post');
+        postElement.style.padding="10px";
+        postElement.innerHTML = `
+          <div class="author-wrapper">
+            <img src="icons/admin.png" width="50px" height="50px" class="author-image">
+            <p class="author">${post.author}</p>
+          </div>
+          <p class="post-content">${truncateString(post.content, 100)}</p>
+          <div class="button-container">
+            <div class="vote-count-container">
+              <button class="upvote">▲</button>
+              <span class="upvote-count">${post.upvotes}</span>
+            </div>
+            <div class="vote-count-container">
+              <button class="downvote">▼</button>
+              <span class="downvote-count">${post.downvotes}</span>
+            </div>
+            <button class="view-comments-button" data-post-id="${post.id}">See More</button>
+          </div>
+        `;
+        postsContainer.appendChild(postElement);
+
+        const upvoteButton = postElement.querySelector('.upvote');
+        const downvoteButton = postElement.querySelector('.downvote');
+
+        const upvoteCount = postElement.querySelector('.upvote-count');
+        const downvoteCount = postElement.querySelector('.downvote-count');
+
+        // upvoteButton.addEventListener('click', function () {
+        //   incrementVote(upvoteCount);
+        // });
+
+        // downvoteButton.addEventListener('click', function () {
+        //   incrementVote(downvoteCount);
+        // });
+      });
+
+      const viewCommentsButtons = document.getElementsByClassName('view-comments-button');
+      Array.from(viewCommentsButtons).forEach(button => {
+        button.addEventListener('click', handleViewComments);
+      });
+    }
+
+    function truncateString(str, maxLength) {
+      if (str.length > maxLength) {
+        return str.substring(0, maxLength) + '...';
+      }
+      return str;
+    }
+
+    function handleViewComments(event) {
+  const postId = event.target.dataset.postId;
+  const post = posts.find(post => post.id == postId);
+
+  if (!post) return;
+
+  const popupOverlay = document.createElement('div');
+  popupOverlay.classList.add('popup-overlay');
+
+popupOverlay.style.backgroundColor = 'grey';
+popupOverlay.style.display = 'flex';
+popupOverlay.style.alignItems = 'center';
+popupOverlay.style.justifyContent = 'center';
+popupOverlay.style.position = 'fixed';
+popupOverlay.style.top = '0';
+popupOverlay.style.left = '0';
+popupOverlay.style.width = '100%';
+popupOverlay.style.height = '100%';
+popupOverlay.style.zIndex = '1';
+popupOverlay.style.opacity = '90%';
+
+
+  const popupContent = document.createElement('div');
+  popupContent.style.backgroundColor="#f5f5f5";
+  popupContent.style.width="800px";
+  popupContent.style.padding="10px";
+  popupContent.style.borderRadius="7%";
+  popupContent.innerHTML = `
+  
+  <div class="post-content">
+    <div class="author-wrapper">
+      <span class="popup-close">&times;</span> <!-- Add the close button -->
+
+      <img src="icons/admin.png" width="50px" height="50px" class="author-image" style="padding:10px">
+      <p class="author">${post.author}</p>
+    </div>
+    <p>${post.content}</p>
+    <div class="button-container">
+      <div class="vote-count-container">
+        <button class="upvote">▲</button>
+        <span class="upvote-count">${post.upvotes}</span>
+      </div>
+      <div class="vote-count-container">
+        <button class="downvote">▼</button>
+        <span class="downvote-count">${post.downvotes}</span>
+      </div>
+    </div>
+  </div>
+  <h4>Comments</h4>
+`;
+
+
+
+const closeButton = document.createElement('span');
+  closeButton.classList.add('popup-close');
+  closeButton.innerHTML = '&times;';
+  closeButton.addEventListener('click', () => {
+    popupOverlay.remove();
+  });
+
+  popupContent.querySelector('.post-content').appendChild(closeButton);
+
+  post.comments.forEach(comment => {
+    const commentElement = document.createElement('div');
+    commentElement.classList.add('comment');
+    commentElement.innerHTML = `
+      <div class="author-wrapper">
+        <img src="icons/admin.png" width="50px" height="50px" class="author-image">
+        <p class="author">${comment.author}</p>
+      </div>
+      <p class="comment-content">${comment.content}</p>
+<div class="vote-count-container">
+  <button class="upvote5">▲</button>
+    <span class="upvote-count">${comment.upvotes}</span>
+
+  <button class="downvote5">▼</button>
+</div>
+
+<style>
+  .vote-count-container {
+    display: inline-flex; /* Use inline-flex to make the buttons appear in a single line */
+    align-items: center; /* Align items vertically center */
+  }
+
+  .upvote5,
+  .downvote5 {
+    margin-right: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 2px;
+    font-size: 16px;
+  }
+
+  .upvote5 {
+    color: #FF5700;
+  }
+
+  .downvote5 {
+    color: #7193FF;
+  }
+
+  .upvote5:hover,
+  .downvote5:hover {
+    color: black;
+  }
+</style>
+        <span class="downvote-count">${comment.downvotes}</span>
+      </div>
+    `;
+
+    const upvoteButton = commentElement.querySelector('.upvote');
+    const downvoteButton = commentElement.querySelector('.downvote');
+
+    const upvoteCount = commentElement.querySelector('.upvote-count');
+    const downvoteCount = commentElement.querySelector('.downvote-count');
+
+    // upvoteButton.addEventListener('click', function () {
+    //   incrementVote(upvoteCount);
+    // });
+
+    // downvoteButton.addEventListener('click', function () {
+    //   incrementVote(downvoteCount);
+    // });
+
+    popupContent.appendChild(commentElement);
+  });
+
+  const popup = document.createElement('div');
+  popup.classList.add('popup');
+  popup.appendChild(popupContent);
+
+  popupOverlay.appendChild(popup);
+  document.body.appendChild(popupOverlay);
+}
+
+
+    renderPosts();
+  </script>
+</body>
+</html>
