@@ -496,6 +496,7 @@
         id: 1,
         author: "John",
         content: "I recently had the pleasure of dining at this amazing chicken restaurant, and let me tell you, it was an absolute delight for my taste buds! From the moment I stepped in, the mouthwatering aroma of perfectly seasoned chicken filled the air, creating an irresistible temptation.",
+        ratings: "⭐ Ratings: 5 out of 5",
         upvotes: 10,
         downvotes: 5,
         comments: [
@@ -512,6 +513,7 @@
         id: 2,
         author: "Jane",
         content: "Now, let's talk about the star of the show—the chicken! The menu boasted a wide variety of mouthwatering chicken dishes, and I was delighted to discover that each one exceeded my expectations. The chicken was cooked to perfection, tender and juicy on the inside with a crispy and flavorful exterior.",
+        ratings: "⭐ Ratings: 5 out of 5",
         upvotes: 100,
         downvotes: 25,
         comments: [
@@ -528,6 +530,7 @@
         id: 3,
         author: "Billie",
         content: "The chicken at this place is absolutely delicious! It's always cooked to perfection, with a crispy and flavorful coating. The meat is juicy and tender, and the seasoning is spot-on. Highly recommended!",
+        ratings: "⭐ Ratings: 5 out of 5",
         upvotes: 30,
         downvotes: 54,
         comments: [
@@ -544,6 +547,7 @@
         id: 4,
         author: "Kovie",
         content: "I've been to many chicken places, but this one stands out from the rest. The chicken here is incredibly flavorful and the portions are generous. The service is also excellent, with friendly staff who make sure you have a great dining experience.",
+        ratings: "⭐ Ratings: 4 out of 5",
         upvotes: 104,
         downvotes: 54,
         comments: [
@@ -559,6 +563,7 @@
       {
         id: 5,
         author: "Niki",
+        ratings: "⭐ Ratings: 2 out of 5",
         content: "I had high expectations for this chicken place, but unfortunately, I was disappointed. The chicken was overcooked and lacked flavor. The service was slow, and the prices were a bit too high for what you get. I wouldn't recommend this place if you're looking for tasty chicken.",
         upvotes: 59,
         downvotes: 95,
@@ -663,6 +668,7 @@
       <p class="author">${post.author}</p>
     </div>
     <p style="white-space: normal;">${post.content}</p>
+    <p>${post.ratings}</p>
     <div class="button-container">
       <div class="vote-count-container">
         <a href="login.html">

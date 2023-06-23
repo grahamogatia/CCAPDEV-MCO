@@ -42,6 +42,11 @@ document.addEventListener("DOMContentLoaded", function() {
     commentTextElement.textContent = commentText;
     commentElement.appendChild(commentTextElement);
 
+    var ratingValueElement = document.getElementById("rating-value");
+    var ratingTextElement = document.createElement("p");
+    ratingTextElement.textContent = "⭐ Ratings: " + ratingValueElement.textContent;
+    commentElement.appendChild(ratingTextElement);
+
     var commentActions = document.createElement("div");
     commentActions.className = "comment-actions";
 
@@ -370,7 +375,7 @@ function deleteComment(commentContainer) {
 
 
 
-  function defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM) {
+  function defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM) {
     var editMode = false;
     var commentElement = document.createElement("div");
     commentElement.className = "comment";
@@ -399,6 +404,10 @@ function deleteComment(commentContainer) {
     var commentTextElement = document.createElement("p");
     commentTextElement.textContent = commentText;
     commentElement.appendChild(commentTextElement);
+
+    var ratingTextElement = document.createElement("p");
+    ratingTextElement.textContent = "⭐ Ratings: " + ratingValue;
+    commentElement.appendChild(ratingTextElement);
   
     var commentActions = document.createElement("div");
     commentActions.className = "comment-actions";
@@ -785,56 +794,61 @@ function deleteComment(commentContainer) {
   // example 1
   var username = "John";
   var commentText = "I absolutely loved Ate Rica's Bacsilog! The combination of crispy bacon, runny fried egg, and garlicky fried rice was pure perfection. The flavors blended beautifully, and the portion size was generous. It's definitely my go-to breakfast spot now!";
+  var ratingValue = "5 out of 5";
   var upvoteCount = 83;
   var downvoteCount = 34;
   var replyText = "Thank you so much for your glowing review! We're thrilled to hear that you loved our Ate Rica's Bacsilog. We take pride in delivering a delicious and generous breakfast experience, and we're glad that we hit the mark for you. We appreciate your support and hope to serve you again soon!";
   var upvoteCountCOM = 23;
   var downvoteCountCOM = 2;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 2
   var username = "Jane";
   var commentText = "I was really disappointed with Ate Rica's Bacsilog. The bacon was overcooked and tasted burnt, the fried rice lacked flavor, and the egg was undercooked. It felt like a poorly executed dish overall. I won't be going back.";
+  var ratingValue = "1 out of 5";
   var upvoteCount = 10;
   var downvoteCount = 55;
   var replyText = "We apologize for the disappointing experience you had with our Bacsilog. We strive to maintain high-quality standards, and it's disheartening to hear that we missed the mark this time. We value your feedback and will make sure to address the issues you mentioned. We hope you'll give us another chance to provide you with a better dining experience in the future.";
   var upvoteCountCOM = 6;
   var downvoteCountCOM = 20;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 3
   var username = "Billie";
   var commentText = "Ate Rica's Bacsilog is a solid choice for a quick breakfast. The bacon was crispy, the fried rice had a nice garlicky kick, and the egg was cooked just right. It's a simple and satisfying meal, but it didn't blow me away.";
+  var ratingValue = "5 out of 5";
   var upvoteCount = 50;
   var downvoteCount = 56;
   var replyText = "Thank you for your review and for considering our Bacsilog a solid choice. We're glad you enjoyed the overall flavors and found it satisfying. We take all feedback into account and will continue to work on enhancing our dish to deliver an exceptional experience every time. We appreciate your support and hope to see you again soon.";
   var upvoteCountCOM = 33;
   var downvoteCountCOM = 21;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 4
   var username = "Kovie";
   var commentText = "I found Ate Rica's Bacsilog to be quite average. The bacon was a bit greasy, and the rice was dry. The portion size was decent, but the flavors didn't stand out. It's an okay option if you're in a hurry, but I wouldn't go out of my way for it.";
+  var ratingValue = "3 out of 5";
   var upvoteCount = 102;
   var downvoteCount = 15;
   var replyText = "We're sorry to hear that our Bacsilog didn't meet your expectations. We appreciate your honest feedback regarding the bacon, fried rice, and overall flavor. We're constantly striving to improve, and your comments will help us address the areas that need attention. We hope you'll consider giving us another chance in the future to provide you with a better dining experience.";
   var upvoteCountCOM = 35;
   var downvoteCountCOM = 62;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 5
   var username = "Niki";
   var commentText = "I'm a huge fan of Ate Rica's Bacsilog! The bacon was perfectly crispy, the fried rice was flavorful and had just the right amount of garlic, and the egg was deliciously runny. It's a delightful combination that always satisfies my breakfast cravings. Highly recommended!";
+  var ratingValue = "5 out of 5";
   var upvoteCount = 95;
   var downvoteCount = 53;
   var replyText = "Thank you for being a huge fan of our Bacsilog! We're delighted to hear that you loved the combination of flavors and found it satisfying. Your recommendation means a lot to us, and we'll continue to serve you with the same quality and deliciousness that you appreciate. We look forward to your next visit!";
   var upvoteCountCOM = 38;
   var downvoteCountCOM = 25;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
 

@@ -496,6 +496,7 @@
         id: 1,
         author: "John",
         content: "Jus and Jerry is my go-to Chinese fast-food restaurant! Their food is always delicious, hot, and fresh. The service is quick, and the staff is friendly.",
+        ratings: "⭐ Ratings: 5 out of 5",
         upvotes: 13,
         downvotes: 9,
         comments: [
@@ -511,6 +512,7 @@
       {
         id: 2,
         author: "Jane",
+        ratings: "⭐ Ratings: 4 out of 5",
         content: "Jus and Jerry is a reliable Chinese fast-food joint. The portions are generous, and the prices are reasonable. The food is tasty, although sometimes it could be a bit greasier than I prefer. Overall, it's a good option for a quick and satisfying meal.",
         upvotes: 13,
         downvotes: 5,
@@ -528,6 +530,7 @@
         id: 3,
         author: "Billie",
         content: "I had mixed feelings about Jus and Jerry. While the food was edible, it lacked flavor and tasted somewhat bland. The service was average, but the restaurant itself could use a deep clean. I might give it another chance, but there are better Chinese fast-food places around.",
+        ratings: "⭐ Ratings: 4 out of 5",
         upvotes: 19,
         downvotes: 6,
         comments: [
@@ -544,6 +547,7 @@
         id: 4,
         author: "Kovie",
         content: "I had a terrible experience at Jus and Jerry. The food was stale, cold, and seemed like it had been sitting out for hours. The staff was uninterested and unapologetic. It was a complete waste of money, and I will never eat there again.",
+        ratings: "⭐ Ratings: 2 out of 5",
         upvotes: 15,
         downvotes: 55,
         comments: [
@@ -560,6 +564,7 @@
         id: 5,
         author: "Niki",
         content: "Jus and Jerry is my favorite Chinese fast-food spot in town! The food is consistently delicious, and the portions are generous. The service is friendly, and they always get my order right. Their orange chicken is to die for! Highly recommended!",
+        ratings: "⭐ Ratings: 5 out of 5",
         upvotes: 55,
         downvotes: 59,
         comments: [
@@ -663,6 +668,7 @@
       <p class="author">${post.author}</p>
     </div>
     <p style="white-space: normal;">${post.content}</p>
+    <p>${post.ratings}</p>
     <div class="button-container">
       <div class="vote-count-container">
         <a href="login.html">

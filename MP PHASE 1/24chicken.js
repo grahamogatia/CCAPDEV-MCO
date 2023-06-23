@@ -42,6 +42,11 @@ document.addEventListener("DOMContentLoaded", function() {
     commentTextElement.textContent = commentText;
     commentElement.appendChild(commentTextElement);
 
+    var ratingValueElement = document.getElementById("rating-value");
+    var ratingTextElement = document.createElement("p");
+    ratingTextElement.textContent = "⭐ Ratings: " + ratingValueElement.textContent;
+    commentElement.appendChild(ratingTextElement);
+
     var commentActions = document.createElement("div");
     commentActions.className = "comment-actions";
 
@@ -370,7 +375,7 @@ function deleteComment(commentContainer) {
 
 
 
-  function defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM) {
+  function defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM) {
     var editMode = false;
     var commentElement = document.createElement("div");
     commentElement.className = "comment";
@@ -399,6 +404,11 @@ function deleteComment(commentContainer) {
     var commentTextElement = document.createElement("p");
     commentTextElement.textContent = commentText;
     commentElement.appendChild(commentTextElement);
+
+    var ratingTextElement = document.createElement("p");
+    ratingTextElement.textContent = "⭐ Ratings: " + ratingValue;
+    commentElement.appendChild(ratingTextElement);
+
   
     var commentActions = document.createElement("div");
     commentActions.className = "comment-actions";
@@ -785,56 +795,61 @@ function deleteComment(commentContainer) {
   // example 1
   var username = "John";
   var commentText = "I recently had the pleasure of dining at this amazing chicken restaurant, and let me tell you, it was an absolute delight for my taste buds! From the moment I stepped in, the mouthwatering aroma of perfectly seasoned chicken filled the air, creating an irresistible temptation.";
+  var ratingValue = "5 out of 5"
   var upvoteCount = 10;
   var downvoteCount = 5;
   var replyText = "Thank you for your wonderful review! We're thrilled that you enjoyed our deliciously seasoned chicken. We hope to see you again soon!";
   var upvoteCountCOM = 3;
   var downvoteCountCOM = 2;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 2
   var username = "Jane";
   var commentText = "Now, let's talk about the star of the show—the chicken! The menu boasted a wide variety of mouthwatering chicken dishes, and I was delighted to discover that each one exceeded my expectations. The chicken was cooked to perfection, tender and juicy on the inside with a crispy and flavorful exterior.";
+  var ratingValue = "5 out of 5"
   var upvoteCount = 100;
   var downvoteCount = 25;
   var replyText = "Thank you for your fantastic review! We're thrilled to hear that our chicken dishes exceeded your expectations and left you thoroughly satisfied. Our team takes pride in cooking each chicken to perfection, ensuring it's tender, juicy, and accompanied by a crispy and flavorful exterior. We appreciate your kind words and look forward to serving you again soon.";
   var upvoteCountCOM = 13;
   var downvoteCountCOM = 22;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 3
   var username = "Billie";
   var commentText = "The chicken at this place is absolutely delicious! It's always cooked to perfection, with a crispy and flavorful coating. The meat is juicy and tender, and the seasoning is spot-on. Highly recommended!";
+  var ratingValue = "5 out of 5"
   var upvoteCount = 30;
   var downvoteCount = 54;
   var replyText = "Thank you so much for your incredible review! We are absolutely thrilled to hear that our chicken has been a source of delight for you. It brings us great joy to know that it consistently meets your expectations and that you find the crispy and flavorful coating, as well as the juicy and tender meat, to be exceptional. We truly appreciate your recommendation and can't express how excited we are to have the opportunity to welcome you back for another memorable dining experience. Your support means the world to us!";
   var upvoteCountCOM = 37;
   var downvoteCountCOM = 52;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 4
   var username = "Kovie";
   var commentText = "I've been to many chicken places, but this one stands out from the rest. The chicken here is incredibly flavorful and the portions are generous. The service is also excellent, with friendly staff who make sure you have a great dining experience.";
+  var ratingValue = "4 out of 5"
   var upvoteCount = 104;
   var downvoteCount = 54;
   var replyText = "Thank you so much for your wonderful review! We are honored that our chicken place has made a lasting impression on you and stands out among the rest. We take great pride in providing incredibly flavorful chicken that leaves our customers satisfied. It's fantastic to hear that you found our portions to be generous, ensuring that you leave with a fully satisfied appetite.";
   var upvoteCountCOM = 43;
   var downvoteCountCOM = 42;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 5
   var username = "Niki";
   var commentText = "I had high expectations for this chicken place, but unfortunately, I was disappointed. The chicken was overcooked and lacked flavor. The service was slow, and the prices were a bit too high for what you get. I wouldn't recommend this place if you're looking for tasty chicken.";
+  var ratingValue = "2 out of 5"
   var upvoteCount = 59;
   var downvoteCount = 95;
   var replyText = "Thank you for sharing your feedback about your experience at our chicken place. We're truly sorry to hear that we did not meet your expectations. We apologize for the overcooked and lackluster chicken you received, as well as the slow service you encountered. We strive to deliver delicious and flavorful chicken along with prompt and attentive service, and we're disappointed to have fallen short in your case. We appreciate your honest feedback regarding the pricing as well. We will carefully review our offerings to ensure they align with the value we aim to provide.";
   var upvoteCountCOM = 93;
   var downvoteCountCOM = 29;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
 

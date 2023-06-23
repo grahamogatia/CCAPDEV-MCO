@@ -42,6 +42,11 @@ document.addEventListener("DOMContentLoaded", function() {
     commentTextElement.textContent = commentText;
     commentElement.appendChild(commentTextElement);
 
+    var ratingValueElement = document.getElementById("rating-value");
+    var ratingTextElement = document.createElement("p");
+    ratingTextElement.textContent = "⭐ Ratings: " + ratingValueElement.textContent;
+    commentElement.appendChild(ratingTextElement);
+
     var commentActions = document.createElement("div");
     commentActions.className = "comment-actions";
 
@@ -370,7 +375,7 @@ function deleteComment(commentContainer) {
 
 
 
-  function defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM) {
+  function defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM) {
     var editMode = false;
     var commentElement = document.createElement("div");
     commentElement.className = "comment";
@@ -399,6 +404,10 @@ function deleteComment(commentContainer) {
     var commentTextElement = document.createElement("p");
     commentTextElement.textContent = commentText;
     commentElement.appendChild(commentTextElement);
+
+    var ratingTextElement = document.createElement("p");
+    ratingTextElement.textContent = "⭐ Ratings: " + ratingValue;
+    commentElement.appendChild(ratingTextElement);
   
     var commentActions = document.createElement("div");
     commentActions.className = "comment-actions";
@@ -785,57 +794,61 @@ function deleteComment(commentContainer) {
   // example 1
   var username = "John";
   var commentText = "Brothers Burger is hands down the best burger joint I have ever been to. The quality of their ingredients is exceptional, and the taste is out of this world. The buns are perfectly toasted, the meat is juicy and flavorful, and the toppings are fresh. The staff is friendly and the service is quick. I can't recommend Brothers Burger enough!";
+  var ratingValue = "5 out of 5";
   var upvoteCount = 100;
   var downvoteCount = 30;
   var replyText = "Thank you for your glowing 5-star review! We're thrilled to hear that you enjoyed our burgers and had a great experience at Brothers Burger.";
   var upvoteCountCOM = 23;
   var downvoteCountCOM = 2;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 2
   var username = "Jane";
   var commentText = "I had high expectations for Brothers Burger, but unfortunately, it fell short. The burger I ordered was quite dry, and the flavors didn't come together as I had hoped. The portion size was also smaller than expected for the price. The service was average, but nothing memorable. Overall, I was disappointed with my experience.";
+  var ratingValue = "3 out of 5";
   var upvoteCount = 10;
   var downvoteCount = 55;
   var replyText = "We appreciate your feedback and apologize for falling short of your expectations. Thank you for sharing your thoughts.";
   var upvoteCountCOM = 6;
   var downvoteCountCOM = 20;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 3
   var username = "Billie";
   var commentText = "Brothers Burger offers a decent burger with a good range of options. The patties are flavorful, and the toppings are fresh. The ambiance of the restaurant is pleasant, and the staff is attentive. While it's not the best burger I've ever had, it's definitely worth a visit if you're in the mood for a solid burger.";
+  var ratingValue = "5 out of 5";
   var upvoteCount = 10;
   var downvoteCount = 5;
   var replyText = "Thank you for your 4-star review! We're glad you found our burgers flavorful and enjoyed the overall experience at Brothers Burger.";
   var upvoteCountCOM = 3;
   var downvoteCountCOM = 2;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 4
   var username = "Kovie";
   var commentText = "My visit to Brothers Burger was a complete letdown. The burger I ordered was overcooked and tasted like rubber. The bun was stale, and the overall presentation was unappealing. The service was slow, and the staff seemed disinterested. I would not recommend wasting your money at this establishment.";
+  var ratingValue = "3 out of 5";
   var upvoteCount = 10;
   var downvoteCount = 5;
   var replyText = "We apologize for the disappointing experience you had at our restaurant. Your feedback is important to us, and we'll work on improving.";
   var upvoteCountCOM = 3;
   var downvoteCountCOM = 2;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 5
   var username = "Niki";
-
   var commentText = "I am a huge fan of Brothers Burger! Every time I visit, I am blown away by the quality of their burgers. The flavors are incredible, and the portions are generous. The staff is friendly and accommodating, and the restaurant has a cozy atmosphere. Brothers Burger has become my go-to place for a delicious and satisfying burger.";
+  var ratingValue = "5 out of 5";
   var upvoteCount = 5;
   var downvoteCount = 5;
   var replyText = "Thank you for being a loyal fan of Brothers Burger! We're delighted to hear that you love our burgers and appreciate your continued support.";
   var upvoteCountCOM = 3;
   var downvoteCountCOM = 2;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
 

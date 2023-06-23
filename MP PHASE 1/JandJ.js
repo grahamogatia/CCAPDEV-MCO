@@ -42,6 +42,11 @@ document.addEventListener("DOMContentLoaded", function() {
     commentTextElement.textContent = commentText;
     commentElement.appendChild(commentTextElement);
 
+    var ratingValueElement = document.getElementById("rating-value");
+    var ratingTextElement = document.createElement("p");
+    ratingTextElement.textContent = "⭐ Ratings: " + ratingValueElement.textContent;
+    commentElement.appendChild(ratingTextElement);
+
     var commentActions = document.createElement("div");
     commentActions.className = "comment-actions";
 
@@ -370,7 +375,7 @@ function deleteComment(commentContainer) {
 
 
 
-  function defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM) {
+  function defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM) {
     var editMode = false;
     var commentElement = document.createElement("div");
     commentElement.className = "comment";
@@ -399,6 +404,10 @@ function deleteComment(commentContainer) {
     var commentTextElement = document.createElement("p");
     commentTextElement.textContent = commentText;
     commentElement.appendChild(commentTextElement);
+
+    var ratingTextElement = document.createElement("p");
+    ratingTextElement.textContent = "⭐ Ratings: " + ratingValue;
+    commentElement.appendChild(ratingTextElement);
   
     var commentActions = document.createElement("div");
     commentActions.className = "comment-actions";
@@ -785,56 +794,61 @@ function deleteComment(commentContainer) {
   // example 1
   var username = "John";
   var commentText = "Jus and Jerry is my go-to Chinese fast-food restaurant! Their food is always delicious, hot, and fresh. The service is quick, and the staff is friendly.";
+  var ratingValue = "5 out of 5";
   var upvoteCount = 13;
   var downvoteCount = 9;
   var replyText = "Thank you so much for your kind words! We're thrilled to hear that you had an exceptional experience with us. Providing top-notch service and meeting our customers' needs is our utmost priority. We look forward to serving you again soon!";
   var upvoteCountCOM = 29;
   var downvoteCountCOM = 12;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 2
   var username = "Jane";
   var commentText = "Jus and Jerry is a reliable Chinese fast-food joint. The portions are generous, and the prices are reasonable. The food is tasty, although sometimes it could be a bit greasier than I prefer. Overall, it's a good option for a quick and satisfying meal.";
+  var ratingValue = "4 out of 5";
   var upvoteCount = 13;
   var downvoteCount = 5;
   var replyText = "Thank you for your feedback! We appreciate your positive comments about our food and reasonable prices. We take note of your suggestion regarding the greasiness and will work on improving that. We value your patronage and hope to see you again soon.";
   var upvoteCountCOM = 16;
   var downvoteCountCOM = 2;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 3
   var username = "Billie";
   var commentText = "I had mixed feelings about Jus and Jerry. While the food was edible, it lacked flavor and tasted somewhat bland. The service was average, but the restaurant itself could use a deep clean. I might give it another chance, but there are better Chinese fast-food places around.";
+  var ratingValue = "4 out of 5";
   var upvoteCount = 19;
   var downvoteCount = 6;
   var replyText = "We apologize for not meeting your expectations during your visit. We strive to provide flavorful food and maintain a clean environment. Your feedback is important to us, and we will use it to improve our offerings. We hope you'll consider giving us another chance to provide you with a better experience.";
   var upvoteCountCOM = 32;
   var downvoteCountCOM = 42;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 4
   var username = "Kovie";
   var commentText = "I had a terrible experience at Jus and Jerry. The food was stale, cold, and seemed like it had been sitting out for hours. The staff was uninterested and unapologetic. It was a complete waste of money, and I will never eat there again.";
+  var ratingValue = "2 out of 5";
   var upvoteCount = 15;
   var downvoteCount = 55;
   var replyText = "We're truly sorry to hear about your negative experience. This is not the standard we strive for, and we apologize for the stale and cold food. We take your feedback seriously and will investigate the matter to ensure it doesn't happen again. We'd appreciate the opportunity to make it up to you if you give us another chance.";
   var upvoteCountCOM = 33;
   var downvoteCountCOM = 12;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
   // example 5
   var username = "Niki";
   var commentText = "Jus and Jerry is my favorite Chinese fast-food spot in town! The food is consistently delicious, and the portions are generous. The service is friendly, and they always get my order right. Their orange chicken is to die for! Highly recommended!";
+  var ratingValue = "5 out of 5";
   var upvoteCount = 55;
   var downvoteCount = 59;
   var replyText = "Thank you for your wonderful review! We're thrilled that you consider us your favorite Chinese fast-food spot. It's a pleasure to serve you our delicious dishes, and we're glad you enjoy our orange chicken. We appreciate your recommendation and look forward to serving you again soon!";
   var upvoteCountCOM = 35;
   var downvoteCountCOM = 28;
-  var commentElement = defaultComRep(username, commentText, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
   document.getElementById("comments-list").appendChild(commentElement);
 
 

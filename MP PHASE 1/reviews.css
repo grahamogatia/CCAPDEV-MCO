@@ -26,8 +26,9 @@
     flex-direction: column;
 
     z-index: 2;
-    height: 450px;
-    width: 450px;
+    height: auto;
+    width: auto;
+    padding: 10px;
     background-color: white;
     position: absolute;
     top: 0%;
@@ -105,13 +106,18 @@
         margin-top: -10px;
     }
 
-.ratings {
-    margin-top: 10px;
+.stars {
+      margin-top: 10px;
+  }
+  
+.stars i {
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
-
-    .fa.fa-star.fa-2x:hover {
-        color: orange;
-    }
+  
+.stars i.active{
+  color: #ff9c1a;
+}
 
 .write-review {
     margin-top: 10px;
