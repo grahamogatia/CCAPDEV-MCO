@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ACDF87, #1E5631);
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>View Profile</title>
+</head>
+<body>
+    <div class="view-profile-container">
+        <div class="view-profile-inner-container">
+            <div class="title">View Profile</div>
+
+            <form action="editProfile.html">
+                <div class="view-profile-user-details">
+
+                    <div class="input">
+                        <div id="view-profile-pic">
+                            <img src="icons/admin.png" alt="profile-pic" id="current-pic">
+                        </div>
+                    </div>
+
+                    <div id="username">
+                        <span class="header">username123</span>
+                    </div>
+
+                    <div class="input" id="description-id">
+                        <span class="header">Short Description</span>
+                        <textarea id="description-area" class="description" placeholder="Short Description" readonly></textarea>
+                    </div>
+
+                    <div class="input">
+                        <span class="header">Latest's Review</span>
+                        <div id="view-profile-review">
+
+                        </div>
+                    </div>
+
+                    <div class="input">
+                        <span class="header">Latest's Comment</span>
+                        <div id="view-profile-comment">
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="submit-button">
+                    <input type="submit" value="Edit Profile">
+                </div>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>
