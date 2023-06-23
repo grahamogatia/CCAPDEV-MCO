@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<script>
+    var dropdownContent = document.getElementById("dropdownContent");
+    var dropdownButton = document.getElementById("dropdownButton");
+    var isCommentClicked = false;
+
+    function toggleDropdown() {
+      dropdownContent.classList.toggle("show");
+    }
+
+    function showTextarea() {
+      var textarea = document.getElementById('myTextarea');
+      textarea.classList.toggle('hide');
+      isCommentClicked = !isCommentClicked;
+      togglePostButtonVisibility();
+    }
+
+    function handleClick(action) {
+      console.log("Clicked " + action);
+    }
+
+    dropdownButton.addEventListener("mouseout", function (event) {
+      if (!dropdownContent.contains(event.toElement)) {
+        dropdownContent.classList.remove("show");
+      }
+    });
+
+    function togglePostButtonVisibility() {
+      var textarea = document.getElementById('myTextarea');
+      var postButton = document.getElementById('postButton');
+      if (isCommentClicked && !textarea.classList.contains('hide')) {
+        postButton.style.display = 'block';
+      } else {
+        postButton.style.display = 'none';
+      }
+    }
+
+    function postComment() {
+      var textareaValue = document.getElementById('myTextarea').value;
+      
+      if (textareaValue.trim() === '') {
+        alert("Comment cannot be empty!");
+        return;
+      }
+      
+      var commentsContainer = document.getElementById('commentsContainer');
+      
+      var commentDiv = document.createElement('div');
+      commentDiv.classList.add('comment');
+      
+      var profilePictureImg = document.createElement('img');
+      profilePictureImg.src = "admin.png";
+      profilePictureImg.alt = 'Profile Picture';
+      profilePictureImg.classList.add('profile-picture');
+      commentDiv.appendChild(profilePictureImg);
+      
+      var commentParagraph = document.createElement('p');
+      commentParagraph.textContent = textareaValue;
+      commentDiv.appendChild(commentParagraph);
+      
+      commentsContainer.appendChild(commentDiv);
+      
+      document.getElementById('myTextarea').value = '';
+      
+      var textarea = document.getElementById('myTextarea');
+      var postButton = document.getElementById('postButton');
+      textarea.classList.add('hide');
+      postButton.style.display = 'none';
+      isCommentClicked = false;
+    }
+  </script>
+
+
+<html>
+    <head>
+      <title>The Lasallian's Food to Pick</title>
+        <link rel="stylesheet" type="text/css" media="all" href="style.css">
+    </head>
+    <body>
+      <header class="header">
+        <a href="mainguest.html">
+          <img src="icons/logo.png" id="logopic" alt="logo" style="padding-left: 10px; margin-right: 0px;">
+        </a>
+        <div class="search-bar">
+        <input type="text" placeholder="Search Restaurants/Reviews">
+        <button type="submit">Search</button>
+      </div>
+    
+      <div class="dropdown">
+        <img src="icons/profile.png" id="dropdownButton" class="profpic" alt="profile picture" onclick="toggleDropdown()" style="padding-right: 0px; margin-right: 10px;">
+        <div id="dropdownContent">
+          <a href="register.html" class="button" onclick="handleClick('Register')">Register</a>
+          <a href="login.html" class="button" onclick="handleClick('Login')">Login</a>
+          <!-- <a href="login.html" class="buttonlog" onclick="handleClick('Logout')">Logout</a> -->
+        </div>
+      </div>
+    </header>
+        <div class="web">
+            <h1> Featured Establishments </h1>
+            <div class="feature">
+                <div class="resto" id="r1">
+                    <img class="restoimg" src="Images/24chicken.jpeg">
+                    <div class="descrip">
+                        <div class="rating">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                            <img src="Images/staroutline.png">
+                        </div>
+                    </div>
+                    <h2 class="name">24 Chicken</h2>
+                    <p class="dp"> 24 Chicken is located at EGI building beside 
+                        Gowkongwei building With it's cheap meals 
+                        and yummy chicken, it is a lot of 
+                        lasallian's go to food since 
+                        it's very accesible and affordable. </p>
+                    <a href="24chickenview.html" class="reviewp">View Reviews</a>
+                </div>    
+                <div class="resto" id="r2">
+                    <img class="restoimg" src="Images/brothers2.jpeg">
+                    <div class="descrip">
+                        <div class="rating">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                            <img src="Images/staroutline.png">
+                            <img src="Images/staroutline.png">
+                        </div>
+                    </div>
+                    <h2 class="name">Brother's Burger</h2>
+                    <p class="dp"> Brother's Burger is located in WH Taft 
+                      a condo near Gokongwei building. They serve jammed-pack burgers 
+                      with its meals. </p>
+                    <a href="brothersview.html" class="reviewp">View Reviews</a>
+                </div>
+                <div class="resto" id="r3">
+                    <img class="restoimg" src="Images/bacsilog.jpeg">
+                    <div class="descrip">
+                        <div class="rating">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                            <img src="Images/staroutline.png">
+                        </div>
+                    </div>
+                    <h2 class="name">Ate Rica's Bacsilog</h2>
+                    <p class="dp"> Known for its cheap and yummy meals, Ate Rica's 
+                      bacsilog is one of the go to meals for a lot of lasallians. 
+                      It is located in Agno, in front of Gokongwei Building.
+                     </p>
+                    <a href="bacsilogview.html" class="reviewp">View Reviews</a>
+                </div>
+                <div class="resto" id="r4">
+                    <img class="restoimg" src="Images/Jus.jpeg">
+                    <div class="descrip">
+                        <div class="rating">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                        </div>
+                    </div>
+                    <h2 class="name">Jus and Jerry</h2>
+                    <p class="dp"> Jus and Jerry is known for its diverse 
+                      it varies from chinese cuisine to filipino. With its 
+                    price ranging from 100-200 pesos. It is an affordable option for most lasallians. </p>
+                    <a href="jus.html" class="reviewp">View Reviews</a>
+                </div>
+                <div class="resto" id="r5">
+                    <img class="restoimg" src="Images/BAB.jpeg">
+                    <div class="descrip">
+                        <div class="rating">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                            <img src="Images/star.png">
+                            <img src="Images/staroutline.png">
+                            <img src="Images/staroutline.png">
+                        </div>
+                    </div>
+                    <h2 class="name">BAB Korean Restaurant</h2>
+                    <p class="dp"> BAB might save your korean food cravings. With its cheap
+                      choices you can enjoy a heavy meal. Located in EGI building near Gokongwei building. </p>
+                    <a href="babview.html" class="reviewp">View Reviews</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+

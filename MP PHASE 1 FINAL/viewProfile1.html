@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            /* background: linear-gradient(135deg, #ACDF87, #1E5631); */
+            background-color: #ACDF87;
+        }
+
+        .post {
+        width: 227px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        /* background-color: #f5f5f5; */
+        border-radius: 10px;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>View Profile</title>
+</head>
+<body>
+    <div class="view-profile-container">
+        <div class="view-profile-inner-container">
+            <div class="title">View Profile</div>
+
+            <form action="editProfile.html">
+                <div class="view-profile-user-details">
+
+                    <div class="input">
+                        <div id="view-profile-pic">
+                            <img src="icons/admin.png" alt="profile-pic" id="current-pic">
+                        </div>
+                    </div>
+
+                    <div id="username">
+                        <span class="headerreg">username123</span>
+                    </div>
+
+                    <div class="input" id="description-id">
+                        <span class="headerreg">Short Description</span>
+                        <textarea id="description-area" class="description" placeholder="Short Description" readonly></textarea>
+                    </div>
+
+
+                    <div class="input">
+                        <span class="headerreg">Latest's Review</span>
+                        <div id="view-profile-review">
+                            <div id="posts-container" style="display: flex; flex-wrap: wrap;justify-content: center;">
+                              <div class="post" style="margin-top: 10px; margin-right: 20px;">
+                                <div style="display: flex; align-items: center; text-align: center;">
+                                    <img src="icons/admin.png" style="width: 30px; height: 30px;">
+                                    <p class="author">Lasallian</p>
+                                </div>
+                                  
+                                <p class="post-content" style="line-height: .9;">The chicken at this place is absolutely delicious... 
+                                    <a href="24chicken.html"><span style="text-decoration: none;">See More</span></a>
+                                </p>
+                              </div>
+
+                              <div class="post" style="margin-top: 10px; margin-right: 10px;">
+                                <div style="display: flex; align-items: center; text-align: center;">
+                                    <img src="icons/admin.png" style="width: 30px; height: 30px;">
+                                    <p class="author">Lasallian</p>
+                                </div>
+                                  
+                                <p class="post-content" style="line-height: .9;">I had a terrible dining experience at BAB Korean Restaurant... 
+                                    <a href="BAB.html"><span style="text-decoration: none;">See More</span></a>
+                                </p>
+                               </div>
+
+                               <div class="post" style="margin-top: 10px; margin-right: 10px;">
+                                <div style="display: flex; align-items: center; text-align: center;">
+                                    <img src="icons/admin.png" style="width: 30px; height: 30px;">
+                                    <p class="author">Lasallian</p>
+                                </div>
+                                  
+                                <p class="post-content" style="line-height: .9;">Jus and Jerry is my favorite Chinese fast-food spot in town... 
+                                    <a href="JandJ.html"><span style="text-decoration: none;">See More</span></a>
+                                </p>
+                               </div>
+                               
+                                <div class="post" style="margin-top: 10px; margin-right: 10px;">
+                                    <div style="display: flex; align-items: center; text-align: center;">
+                                        <img src="icons/admin.png" style="width: 30px; height: 30px;">
+                                        <p class="author">Lasallian</p>
+                                    </div>
+                                      
+                                    <p class="post-content" style="line-height: .9;">I'm a huge fan of Ate Rica's Bacsilog! The bacon was perfectly crispy... 
+                                        <a href="Bacsilog.html"><span style="text-decoration: none;">See More</span></a>
+                                    </p>
+                                   </div>
+    
+                                   <div class="post" style="margin-top: 10px; margin-right: 10px;">
+                                    <div style="display: flex; align-items: center; text-align: center;">
+                                        <img src="icons/admin.png" style="width: 30px; height: 30px;">
+                                        <p class="author">Lasallian</p>
+                                    </div>
+                                      
+                                    <p class="post-content" style="line-height: .9;">I am a huge fan of Brothers Burger! Every time I visit... 
+                                        <a href="BrothersBurger.html"><span style="text-decoration: none;">See More</span></a>
+                                    </p>
+                               </div>
+                              </div>
+                            </div>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="input">
+                        <span class="headerreg">Latest's Comment</span>
+                        <!-- <div id="view-profile-comment"> -->
+                        <div>
+                            <div class="post" style="width:100%">
+                                <div id="posts-container" style="display: flex; flex-wrap: wrap;justify-content: center;">
+                                    <div class="post" style="margin-top: 10px; margin-right: 20px;">
+                                      <div style="display: flex; align-items: center; text-align: center;">
+                                          <img src="icons/admin.png" style="width: 30px; height: 30px;">
+                                          <p class="author">Lasallian</p>
+                                      </div>
+                                        
+                                      <p class="post-content" style="line-height: .9;">Your description of the chicken dishes has me salivating! 
+                                        <a href="24chicken.html"><span style="text-decoration: none;">See More</span></a>
+                                      </p>
+                                    </div>
+      
+                                    <div class="post" style="margin-top: 10px; margin-right: 10px;">
+                                      <div style="display: flex; align-items: center; text-align: center;">
+                                          <img src="icons/admin.png" style="width: 30px; height: 30px;">
+                                          <p class="author">Lasallian</p>
+                                      </div>
+                                        
+                                      <p class="post-content" style="line-height: .9;">Your comment perfectly captures the essence of the Korean food at this place. 
+                                          <a href="BAB.html"><span style="text-decoration: none;">See More</span></a>
+                                      </p>
+                                     </div>
+      
+                                     <div class="post" style="margin-top: 10px; margin-right: 10px;">
+                                      <div style="display: flex; align-items: center; text-align: center;">
+                                          <img src="icons/admin.png" style="width: 30px; height: 30px;">
+                                          <p class="author">Lasallian</p>
+                                      </div>
+                                        
+                                      <p class="post-content" style="line-height: .9;">It really is disappointing when a restaurant's food lacks flavor and tastes bland.
+                                          <a href="JandJ.html"><span style="text-decoration: none;">See More</span></a>
+                                      </p>
+                                     </div>
+                                     
+                                      <div class="post" style="margin-top: 10px; margin-right: 10px;">
+                                          <div style="display: flex; align-items: center; text-align: center;">
+                                              <img src="icons/admin.png" style="width: 30px; height: 30px;">
+                                              <p class="author">Lasallian</p>
+                                          </div>
+                                            
+                                          <p class="post-content" style="line-height: .9;">Overcooked and burnt bacon, flavorless fried rice, and undercooked egg...
+                                              <a href="Bacsilog.html"><span style="text-decoration: none;">See More</span></a>
+                                          </p>
+                                         </div>
+          
+                                         <div class="post" style="margin-top: 10px; margin-right: 10px;">
+                                          <div style="display: flex; align-items: center; text-align: center;">
+                                              <img src="icons/admin.png" style="width: 30px; height: 30px;">
+                                              <p class="author">Lasallian</p>
+                                          </div>
+                                            
+                                          <p class="post-content" style="line-height: .9;"> I couldn't agree more about the exceptional quality of their ingredients...
+                                              <a href="BrothersBurger.html"><span style="text-decoration: none;">See More</span></a>
+                                          </p>
+                                     </div>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="submit-button">
+                            <input type="submit" value="Edit Profile">
+                        </div>
+                    </div>
+
+                </div>
+
+                
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>
