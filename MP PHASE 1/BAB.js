@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
     commentElement.appendChild(profilePicture);
 
     var ownerNameElement = document.createElement("p");
-    ownerNameElement.textContent = "User's Name";
+    ownerNameElement.textContent = "Lasallian";
     ownerNameElement.className = "owner-name";
     ownerNameElement.style.fontWeight = "bold";
 
@@ -154,19 +154,22 @@ function createChildCommentContainer(replyText) {
   childCommentContainer.classList.add('comment');
 
   var profilePicture = document.createElement("img");
-  profilePicture.src = "BAB/logo.png";
+  profilePicture.src = "icons/admin.png";
   profilePicture.style.marginLeft = '50px';
   profilePicture.className = "profile-picture";
   childCommentContainer.appendChild(profilePicture);
 
   var ownerNameElement = document.createElement("p");
-  ownerNameElement.textContent = "BAB Korean Restaurant";
+  ownerNameElement.textContent = "Lasallian";
   ownerNameElement.className = "owner-name";
   ownerNameElement.style.fontWeight = "bold";
 
   var verifiedText = document.createElement("p");
   verifiedText.className = "verifiedText";
-  verifiedText.textContent = "©";
+  verifiedText.textContent = "• Replying to Lasallian";
+  verifiedText.style.color = "gray";
+  verifiedText.style.fontStyle = "italic";
+  verifiedText.style.fontWeight = "bold";
 
   var ownerContainer = document.createElement("div");
   ownerContainer.className = "owner-container";
@@ -366,16 +369,7 @@ function deleteComment(commentContainer) {
     commentElement.remove();
   }
 
-
-
-
-
-
-
-
-
-
-  function defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM) {
+  function defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM, replyText1, upvoteCountCOM1, downvoteCountCOM1, mention, username1) {
     var editMode = false;
     var commentElement = document.createElement("div");
     commentElement.className = "comment";
@@ -477,7 +471,7 @@ function deleteComment(commentContainer) {
   
     function postReply(index, replyText) {
       var parentCommentContainer = document.getElementById('comments-list').children[index];
-      var childCommentContainer = createChildCommentContainer(replyText);
+      var childCommentContainer = createChildCommentContainer(username, replyText);
       parentCommentContainer.appendChild(childCommentContainer);
     }
   
@@ -556,10 +550,163 @@ function deleteComment(commentContainer) {
     var replyContainer = createReplyContainer(replyText, upvoteCountCOM, downvoteCountCOM);
     commentStats.appendChild(replyContainer);
     commentElement.appendChild(commentStats);
+
+    var commentStats1 = document.createElement("div");
+    commentStats1.className = "comment-stats";
+    var replyContainer1 = createReplyContainer1(replyText1, upvoteCountCOM1, downvoteCountCOM1, mention, username1);
+    commentStats1.appendChild(replyContainer1);
+    commentElement.appendChild(commentStats1);
   
     return commentElement;
   }
 
+
+  function createReplyContainer1(replyText1, upvoteCountCOM1, downvoteCountCOM1, mention, username1) {
+    var replyContainer1 = document.createElement("div");
+    replyContainer1.className = "reply-container";
+    replyContainer1.style.margin = "20px";
+    replyContainer1.style.marginLeft = "auto";
+    replyContainer1.style.marginTop = "5px";
+    replyContainer1.style.marginBottom = "5px";
+
+    var imageContainer1 = document.createElement("div");
+    imageContainer1.className = "image-container";
+
+    var imageElement1 = document.createElement("img");
+    imageElement1.src = "icons/admin.png";
+    imageElement1.style.width = "30px"; 
+    imageElement1.style.height= "30px"; 
+    imageElement1.style.borderRadius= "50%";
+    imageElement1.style.marginRight= "10px";
+    imageElement1.style.float= "left"; 
+    imageElement1.style.marginLeft = "60px";
+
+    imageContainer1.appendChild(imageElement1);
+
+    var ownername1 = document.createElement("p");
+    ownername1.textContent = username1;
+    ownername1.style.fontWeight = "bold";
+
+    replyContainer1.appendChild(imageContainer1);
+    replyContainer1.appendChild(ownername1);
+
+    var mention1 = document.createElement("p");
+    mention1.textContent = mention;
+    mention1.style.fontWeight="bold";
+    // mention1.style.textDecoration="underline";
+    mention1.style.fontStyle="italic";
+    mention1.style.color="grey";
+
+    ownername1.style.display = "inline-block";
+    mention1.style.display = "inline-block";
+
+    var replyTextElement1 = document.createElement("p");
+    replyTextElement1.textContent = replyText1;
+    replyTextElement1.style.marginLeft = "100px";
+  
+    var replyStats1 = document.createElement("div");
+    replyStats1.className = "reply-stats";
+  
+    var editButton10 = createButton("Edit", "edit-button");
+    editButton10.style.marginRight = "5px";
+    editButton10.style.backgroundColor = "transparent";
+    editButton10.style.border = "none";
+    editButton10.style.cursor = "pointer";
+    editButton10.style.padding = "2px";
+    editButton10.style.fontSize = "16px";
+    editButton10.style.marginLeft = "90px";
+
+    var editMode = false;
+
+    editButton10.addEventListener('click', function() {
+      if (editMode) {
+        replyTextElement1.contentEditable = false;
+        editButton10.textContent = "Edit";
+        editMode = false;
+
+        saveEditedComment(replyTextElement1, originalReplyText);
+      } else {
+        replyTextElement1.contentEditable = true;
+        replyTextElement1.classList.add("editable");
+        replyTextElement1.focus();
+        editButton10.textContent = "Save";
+        editMode = true;
+        var originalReplyText = replyTextElement1.textContent;
+      }
+    });
+  
+    var deleteButton10 = createButton("Delete", "delete-button");
+    deleteButton10.style.marginRight = "5px";
+    deleteButton10.style.backgroundColor = "transparent";
+    deleteButton10.style.border = "none";
+    deleteButton10.style.cursor = "pointer";
+    deleteButton10.style.padding = "2px";
+    deleteButton10.style.fontSize = "16px";
+
+    deleteButton10.addEventListener('click', function() {
+      deleteComment(replyContainer1);
+    });
+
+    var thumbsUpButton10 = createButton("▲", "upvote");
+
+    thumbsUpButton10.addEventListener("mouseenter", function() {
+      thumbsUpButton10.style.color = "black";
+    });
+    thumbsUpButton10.addEventListener("mouseleave", function() {
+      thumbsUpButton10.style.color = "#FF5700";
+    });
+
+    thumbsUpButton10.style.marginRight = "5px";
+    thumbsUpButton10.style.border = "none";
+    thumbsUpButton10.style.backgroundColor = "transparent";
+    thumbsUpButton10.style.cursor = "pointer";
+    thumbsUpButton10.style.padding = "2px";
+    thumbsUpButton10.style.fontSize = "16px";
+    thumbsUpButton10.style.color = "#FF5700"
+
+    var thumbsUpCount10 = createVoteCount();
+    thumbsUpCount10.textContent = upvoteCountCOM1; 
+
+    thumbsUpButton10.appendChild(thumbsUpCount10);
+    thumbsUpButton10.addEventListener("click", function () {
+      updateVoteCount(thumbsUpCount10, 1);
+    });
+
+    var thumbsDownButton10 = createButton("▼", "downvote");
+    thumbsDownButton10.addEventListener("mouseenter", function() {
+      thumbsDownButton10.style.color = "black";
+    });
+
+    thumbsDownButton10.addEventListener("mouseleave", function() {
+      thumbsDownButton10.style.color = "#7193FF";
+    });
+
+    thumbsDownButton10.style.marginRight = "5px";
+    thumbsDownButton10.style.border = "none";
+    thumbsDownButton10.style.backgroundColor = "transparent";
+    thumbsDownButton10.style.cursor = "pointer";
+    thumbsDownButton10.style.padding = "2px";
+    thumbsDownButton10.style.fontSize = "16px";
+    thumbsDownButton10.style.color = "#7193FF"
+
+    var thumbsDownCount10 = createVoteCount();
+    thumbsDownCount10.textContent = downvoteCountCOM1; 
+
+    thumbsDownButton10.appendChild(thumbsDownCount10);
+    thumbsDownButton10.addEventListener("click", function () {
+      updateVoteCount(thumbsDownCount10, 1);
+    });
+    
+    replyStats1.appendChild(editButton10);
+    replyStats1.appendChild(deleteButton10);
+    replyStats1.appendChild(thumbsUpButton10);
+    replyStats1.appendChild(thumbsDownButton10);
+    replyContainer1.appendChild(mention1);
+    replyContainer1.appendChild(replyTextElement1);
+    replyContainer1.appendChild(replyStats1);
+  
+    return replyContainer1;
+  }
 
   function createReplyContainer(replyText, upvoteCountCOM, downvoteCountCOM) {
     var replyContainer = document.createElement("div");
@@ -573,7 +720,7 @@ function deleteComment(commentContainer) {
     imageContainer.className = "image-container";
 
     var imageElement = document.createElement("img");
-    imageElement.src = "BAB/logo.png";
+    imageElement.src = "24chickenPICS/logo.jpg";
     imageElement.style.width = "30px"; 
     imageElement.style.height= "30px"; 
     imageElement.style.borderRadius= "50%";
@@ -584,7 +731,7 @@ function deleteComment(commentContainer) {
     imageContainer.appendChild(imageElement);
 
     var ownername = document.createElement("p");
-    ownername.textContent = "BAB Korean Restaurant ©";
+    ownername.textContent = "24 Chicken ©";
     ownername.style.fontWeight = "bold";
 
     replyContainer.appendChild(imageContainer);
@@ -697,25 +844,30 @@ function deleteComment(commentContainer) {
     return replyContainer;
   }
   
-  function createChildCommentContainer(replyText) {
+  function createChildCommentContainer(username,replyText) {
     var childCommentContainer = document.createElement('div');
     childCommentContainer.classList.add('comment');
 
     var profilePicture = document.createElement("img");
-    profilePicture.src = "icons/owner.png";
+    profilePicture.src = "icons/admin.png";
     profilePicture.style.marginLeft = '50px';
     profilePicture.className = "profile-picture";
     childCommentContainer.appendChild(profilePicture);
 
     var ownerNameElement = document.createElement("p");
-    ownerNameElement.textContent = "BAB Korean Restaurant";
+    ownerNameElement.textContent = "Lasallian";
     ownerNameElement.className = "owner-name";
     ownerNameElement.style.fontWeight = "bold";
 
     var verifiedText = document.createElement("p");
     verifiedText.className = "verifiedText";
-    verifiedText.textContent = "©";
+    // verifiedText.textContent = "©";
+    verifiedText.textContent = "• Replying to "+username;
+    verifiedText.style.color = "gray";
+    verifiedText.style.fontStyle = "italic";
+    verifiedText.style.fontWeight = "bold";
 
+    //here
     var ownerContainer = document.createElement("div");
     ownerContainer.className = "owner-container";
     ownerContainer.appendChild(ownerNameElement);
@@ -797,59 +949,85 @@ function deleteComment(commentContainer) {
   var ratingValue = "5 out of 5";
   var upvoteCount = 13;
   var downvoteCount = 9;
-  var replyText = "Thank you for sharing your positive experience at BAB Korean Restaurant! We're thrilled to hear that you enjoyed our cupbab, kimbab, and tteokbokki. It's great to know that our dishes reminded you of the authentic flavors from Seoul. We appreciate your recommendation and look forward to serving you more delicious Korean cuisine in the future!";
+  var repceo = "Thank you for sharing your positive experience at BAB Korean Restaurant! We're thrilled to hear that you enjoyed our cupbab, kimbab, and tteokbokki. It's great to know that our dishes reminded you of the authentic flavors from Seoul. We appreciate your recommendation and look forward to serving you more delicious Korean cuisine in the future!";
   var upvoteCountCOM = 29;
   var downvoteCountCOM = 12;
-  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
-  document.getElementById("comments-list").appendChild(commentElement);
+  var replyText1 = "I completely agree with you! BAB Korean Restaurant is truly a gem when it comes to authentic Korean cuisine. I also recently had the pleasure of dining there, and I must say, it was an extraordinary experience. The cupbab, kimbab, and tteokbokki were all outstanding in taste and presentation.";
+  var upvoteCountCOM1 = 3;
+  var downvoteCountCOM1 = 2;
+  var mention = "• Replying to John"
+  var username1 = "Kovie"
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, repceo, upvoteCountCOM, downvoteCountCOM, replyText1, upvoteCountCOM1, downvoteCountCOM1, mention, username1);
+    document.getElementById("comments-list").appendChild(commentElement);
 
   // example 2
-  var username = "Jane;" 
+  var username = "Jane" 
   var commentText = "My visit to BAB Korean Restaurant was a delightful culinary journey. The cupbab, kimbab, and tteokbokki were all prepared with great care and attention to detail. The flavors were rich and satisfying, although I would have liked a bit more spice in the tteokbokki. The ambiance of the restaurant was cozy and inviting, making it a perfect place for a casual meal. Overall, I had a wonderful dining experience and would happily return.";
   var ratingValue = "4 out of 5";
   var upvoteCount = 13;
   var downvoteCount = 5;
-  var replyText = "Thank you for your feedback and for choosing to dine at BAB Korean Restaurant. We're glad to hear that you had a delightful culinary journey with us. We appreciate your comment about the spice level in the tteokbokki and will take it into consideration for future improvements. We hope to have the pleasure of serving you again soon!";
+  var repceo = "Thank you for your feedback and for choosing to dine at BAB Korean Restaurant. We're glad to hear that you had a delightful culinary journey with us. We appreciate your comment about the spice level in the tteokbokki and will take it into consideration for future improvements. We hope to have the pleasure of serving you again soon!";
   var upvoteCountCOM = 16;
   var downvoteCountCOM = 2;
-  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
-  document.getElementById("comments-list").appendChild(commentElement);
+  var replyText1 = "Your comment perfectly captures the essence of the Korean food at this place";
+  var upvoteCountCOM1 = 3;
+  var downvoteCountCOM1 = 2;
+  var mention = "• Replying to Jane"
+  var username1 = "Kovie"
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, repceo, upvoteCountCOM, downvoteCountCOM, replyText1, upvoteCountCOM1, downvoteCountCOM1, mention, username1);
+    document.getElementById("comments-list").appendChild(commentElement);
 
   // example 3
-  var username = "Billie;" 
+  var username = "Billie" 
   var commentText = "While the cupbab and kimbab at BAB Korean Restaurant were tasty, I found the tteokbokki to be a bit disappointing. The sauce lacked depth of flavor and the rice cakes were slightly overcooked. The service was decent, although the waitstaff seemed a bit overwhelmed during peak hours. The restaurant's atmosphere was pleasant, but it could benefit from some minor improvements. It's an okay place for Korean food, but there are better options available.";
   var ratingValue = "3 out of 5";
   var upvoteCount = 19;
   var downvoteCount = 6;
-  var replyText = "Thank you for visiting BAB Korean Restaurant and sharing your thoughts. We're glad you enjoyed the cupbab and kimbab, but we apologize for the disappointment with the tteokbokki. We appreciate your feedback regarding the sauce and rice cakes, and we will work on enhancing their flavors. We also value your comments about the service and ambiance, and we'll strive to make improvements. We hope to have another opportunity to provide you with a better experience.";
+  var repceo = "Thank you for visiting BAB Korean Restaurant and sharing your thoughts. We're glad you enjoyed the cupbab and kimbab, but we apologize for the disappointment with the tteokbokki. We appreciate your feedback regarding the sauce and rice cakes, and we will work on enhancing their flavors. We also value your comments about the service and ambiance, and we'll strive to make improvements. We hope to have another opportunity to provide you with a better experience.";
   var upvoteCountCOM = 32;
   var downvoteCountCOM = 42;
-  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
-  document.getElementById("comments-list").appendChild(commentElement);
+  var replyText1 = "Your comment perfectly captures the essence of the chicken at this place";
+  var upvoteCountCOM1 = 3;
+  var downvoteCountCOM1 = 2;
+  var mention = "• Replying to Billie"
+  var username1 = "John"
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, repceo, upvoteCountCOM, downvoteCountCOM, replyText1, upvoteCountCOM1, downvoteCountCOM1, mention, username1);
+    document.getElementById("comments-list").appendChild(commentElement);
 
   // example 4
-  var username = "Kovie;" 
+  var username = "Kovie" 
   var commentText = "My experience at BAB Korean Restaurant was rather underwhelming. The cupbab and kimbab were mediocre, lacking the authentic flavors I was expecting. The tteokbokki was particularly disappointing, as it was overly greasy and lacked the traditional spicy kick. The service was slow and inattentive, and the overall atmosphere felt cramped and uncomfortable. I wouldn't recommend this restaurant if you're looking for a truly satisfying Korean dining experience.";
   var ratingValue = "2 out of 5";
   var upvoteCount = 15;
   var downvoteCount = 55;
-  var replyText = "We're sorry to hear that your experience at BAB Korean Restaurant fell short of your expectations. We apologize for the mediocrity of the cupbab, kimbab, and tteokbokki. Your feedback regarding the lack of authentic flavors is noted, and we will address this issue with our culinary team. We're also sorry for the slow and inattentive service and the discomfort you felt in our restaurant. We appreciate your honest feedback and will use it to improve our offerings and overall dining experience.";
+  var repceo = "We're sorry to hear that your experience at BAB Korean Restaurant fell short of your expectations. We apologize for the mediocrity of the cupbab, kimbab, and tteokbokki. Your feedback regarding the lack of authentic flavors is noted, and we will address this issue with our culinary team. We're also sorry for the slow and inattentive service and the discomfort you felt in our restaurant. We appreciate your honest feedback and will use it to improve our offerings and overall dining experience.";
   var upvoteCountCOM = 33;
   var downvoteCountCOM = 12;
-  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
-  document.getElementById("comments-list").appendChild(commentElement);
+  var replyText1 = "Flavorful chicken and generous portions sound like a winning combination! And of course, excellent service is always a bonus, as it adds to the overall dining experience.";
+  var upvoteCountCOM1 = 3;
+  var downvoteCountCOM1 = 2;
+  var mention = "• Replying to Kovie"
+  var username1 = "Lasallian"
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, repceo, upvoteCountCOM, downvoteCountCOM, replyText1, upvoteCountCOM1, downvoteCountCOM1, mention, username1);
+    document.getElementById("comments-list").appendChild(commentElement);
 
   // example 5
-  var username = "Niki;" 
+  var username = "Lasallian" 
   var commentText = "I had a terrible dining experience at BAB Korean Restaurant. The cupbab, kimbab, and tteokbokki were all subpar, lacking in flavor and freshness. The rice in the kimbab was dry and the tteokbokki was overly mushy. The service was extremely poor, with rude and inattentive staff who seemed disinterested in providing a good dining experience. The restaurant was also poorly maintained and lacked cleanliness. I would strongly advise against visiting this establishment.";
   var ratingValue = "1 out of 5";
   var upvoteCount = 55;
   var downvoteCount = 59;
-  var replyText = "We're deeply sorry to hear about your terrible dining experience at BAB Korean Restaurant. We apologize for the subpar quality of our cupbab, kimbab, and tteokbokki. Your feedback regarding the lack of flavor and freshness is concerning, and we will investigate this matter with our kitchen staff. We're also sorry for the poor service, lack of cleanliness, and overall dissatisfaction you experienced. We take your comments seriously, and we will make every effort to address these issues to ensure a better dining experience for our customers. Thank you for bringing these concerns to our attention.";
+  var repceo = "We're deeply sorry to hear about your terrible dining experience at BAB Korean Restaurant. We apologize for the subpar quality of our cupbab, kimbab, and tteokbokki. Your feedback regarding the lack of flavor and freshness is concerning, and we will investigate this matter with our kitchen staff. We're also sorry for the poor service, lack of cleanliness, and overall dissatisfaction you experienced. We take your comments seriously, and we will make every effort to address these issues to ensure a better dining experience for our customers. Thank you for bringing these concerns to our attention.";
   var upvoteCountCOM = 35;
   var downvoteCountCOM = 28;
-  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, replyText, upvoteCountCOM, downvoteCountCOM);
+  var replyText1 = "I appreciate your honest feedback about your experience at this chicken place. It's disappointing when our expectations aren't met, especially when it comes to food :((";
+  var upvoteCountCOM1 = 3;
+  var downvoteCountCOM1 = 2;
+  var mention = "• Replying to Lasallian"
+  var username1 = "Bobby"
+  var commentElement = defaultComRep(username, commentText, ratingValue, upvoteCount, downvoteCount, repceo, upvoteCountCOM, downvoteCountCOM, replyText1, upvoteCountCOM1, downvoteCountCOM1, mention, username1);
   document.getElementById("comments-list").appendChild(commentElement);
+
 
 
 
