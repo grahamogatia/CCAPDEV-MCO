@@ -35,3 +35,11 @@ Edit/Delete a Review: Review owners can edit their reviews at any time. Edited r
 Search Establishments/Reviews: Visitors and users can search for establishments based on similarities in the name or description. They can also filter establishments based on their overall rating. Additionally, they can search for reviews based on similarities in the title or post body.
 
 Establishment Owner Response: An additional user account role called "establishment owner" allows owners to respond to reviews about their establishment. Their responses will be published and visible to the public.
+
+Installation:
+Instructions on how to install and set up the DLSU Food Review web application will be provided here. Include any required dependencies and how to run the application locally.
+
+1. Open the app.js file in the file directory
+2. Enter node app.js in the terminal
+3. Open it by http://localhost:8080
+   
